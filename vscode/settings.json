@@ -1,0 +1,33 @@
+{
+    //editor
+    "editor.mouseWheelZoom": true,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+
+    //workbench
+    "workbench.sideBar.location": "right",
+
+    //window
+    "window.zoomLevel": 2,
+
+    //explorer
+    "explorer.compactFolders": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+
+    //files
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+
+    //update
+    "update.mode": "default",
+
+    //telemetry
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    //terminal
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.copyOnSelection": true
+}
