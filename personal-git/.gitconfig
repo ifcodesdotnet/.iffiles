@@ -1,0 +1,13 @@
+[user]
+	name = Ismael Fernandez
+	email = 69177486+ifcodesdotnet@users.noreply.github.com
+[alias]
+    ls = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	st = status --short --branch
+	checkin = "!f() { git add . && git commit --all --message \"$1\"; }; f"
+	rollback = revert
+	undo = reset --hard HEAD
+	new = checkout -b
+	branches = branch -a
+	nuke = branch -d
+	amend = commit --amend
