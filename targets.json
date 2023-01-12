@@ -1,0 +1,9 @@
+﻿{
+  "RepositoryPath": "C:\\Users\\arbit\\.iffiles",
+  "Applications": [
+    {
+      "Name": "autohotkey",
+      "TargetDirectory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    }
+  ]
+}
