@@ -1,15 +1,28 @@
 {
+    //editor
     "editor.mouseWheelZoom": true,
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
 
+    //workbench
+    "workbench.sideBar.location": "right",
+
+    //window
+    "window.zoomLevel": 2,
+
+    //explorer
+    "explorer.compactFolders": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "explorer.compactFolders": false,
 
-    "workbench.sideBar.location": "right",
-    "workbench.startupEditor": "none",
-
+    //files
     "files.autoSave": "afterDelay",
-    "update.mode": "none"
+    "files.trimTrailingWhitespace": true,
+
+    //update
+    "update.mode": "none",
+
+    //telemetry
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
 }
