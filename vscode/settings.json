@@ -1,0 +1,15 @@
+{
+    "editor.mouseWheelZoom": true,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "explorer.compactFolders": false,
+
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
+
+    "files.autoSave": "afterDelay",
+    "update.mode": "none"
+}
