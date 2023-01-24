@@ -20,3 +20,6 @@ return
 
 :*:rel`n::relative
 return
+
+:*:spec`n::specific
+return
