@@ -23,3 +23,6 @@ return
 
 :*:spec`n::specific
 return
+
+:*:repo`n::repository
+return
