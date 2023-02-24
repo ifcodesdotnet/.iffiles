@@ -29,3 +29,6 @@ return
 
 :*:dep`n::dependencies
 return
+
+:*:receive`n::receive
+return
