@@ -26,3 +26,6 @@ return
 
 :*:repo`n::repository
 return
+
+:*:dep`n::dependencies
+return
