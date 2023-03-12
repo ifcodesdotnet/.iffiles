@@ -30,5 +30,5 @@ return
 :*:dep`n::dependencies
 return
 
-:*:receive`n::receive
+:*:rec`n::receive
 return
