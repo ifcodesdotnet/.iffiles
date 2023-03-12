@@ -1,5 +1,6 @@
 ; Script name: kebab-case.ahk
 ; Description: Convert highlighted space delimited words to hyphen delimited (kebab case)
+;              with alt + -
 ; GitHub: https://github.com/ifcodesdotnet/.iffiles
 ; Contributors: Ismael Fernandez
 ; References:
