@@ -24,5 +24,8 @@
 
     //telemetry
     "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+
+    //terminal
+    "terminal.integrated.defaultLocation": "editor"
 }
