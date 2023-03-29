@@ -4,6 +4,10 @@
     {
       "Name": "autohotkey",
       "TargetDirectory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    },
+    {
+      "Name": "vscode",
+      "TargetDirectory": "AppData\\Roaming\\Code\\User"
     }
   ]
 }
