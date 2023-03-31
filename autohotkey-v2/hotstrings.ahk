@@ -13,3 +13,5 @@
 :*:dep`n::dependencies
 
 :*:rec`n::receive
+
+:*:sch`n::schedule
