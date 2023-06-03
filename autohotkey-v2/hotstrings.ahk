@@ -4,7 +4,7 @@
 ; References:
 ;   https://www.autohotkey.com/docs/v2/Hotstrings.htm
 ;     Link to hotstrings documentation
-
+;
 ;   https://www.autohotkey.com/docs/v2/Hotstrings.htm#EndChars
 ;     Link to hotstrings documentation that explains how Ending Characters work
 ;
