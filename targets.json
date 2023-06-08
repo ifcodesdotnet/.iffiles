@@ -1,13 +1,13 @@
 ﻿{
-  "DotfilesDirectoryPath": "C:\\Users\\arbit\\.iffiles",
-  "Applications": [
+  "dotfiles-directory-path": "C:\\Users\\arbit\\.iffiles",
+  "applications": [
     {
-      "Name": "autohotkey",
-      "TargetDirectory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+      "name": "autohotkey",
+      "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
     },
     {
-      "Name": "vscode",
-      "TargetDirectory": "AppData\\Roaming\\Code\\User"
+      "name": "vscode",
+      "target-directory": "AppData\\Roaming\\Code\\User"
     }
   ]
 }
