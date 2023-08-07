@@ -1,3 +1,5 @@
+# I got most of the code for this snippet from the following link:
+#  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases?platform=windows
 env=~/.ssh/agent.env
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
@@ -12,7 +14,7 @@ add_keys () {
         #  a file extension. If the file does not have a file extension
         #  add it to the ssh-agent.
         if [[ ! "$file" == *.* ]]; then
-            echo "$file"
+            #echo "$file"
             ssh-add "$file" > /dev/null 2>&1
         fi
     done
