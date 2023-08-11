@@ -13,7 +13,7 @@ add_keys () {
         # checking to see if the file in the current iteration has
         #  a file extension. If the file does not have a file extension
         #  add it to the ssh-agent.
-        if [[ ! "$file" == *.* ]]; then
+        if [[ ! "$file" == *.pub ]]; then
             #echo "$file"
             ssh-add "$file" > /dev/null 2>&1
         fi
