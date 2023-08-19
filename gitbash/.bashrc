@@ -1,5 +1,6 @@
-# I got most of the code for this snippet from the following link:
-#  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases?platform=windows
+#  The code for this script was primarily taken from the following piece of
+#    GitHub Documentation:
+#    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
 env=~/.ssh/agent.env
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
@@ -9,12 +10,14 @@ agent_start () {
     . "$env" >| /dev/null ; }
 
 add_keys () {
+    #  Loop through all of key inside the keys directory. The keys directory
+    #    should be inside of the users home directory.
     for file in /c/Users/"$(whoami)"/keys/*; do
-        # checking to see if the file in the current iteration has
-        #  a file extension. If the file does not have a file extension
-        #  add it to the ssh-agent.
+        #  While iterating through all of the keys we need to check if the key
+        #    is either a private or a public key. If the key is a private key
+        #    we need to update it's permissions before we add it the ssh-agent.
         if [[ ! "$file" == *.pub ]]; then
-            #echo "$file"
+            chmod 600 "$file"
             ssh-add "$file" > /dev/null 2>&1
         fi
     done
@@ -33,3 +36,6 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+
+alias k='ssh-add -l'
+alias kd='ssh-add -D'
