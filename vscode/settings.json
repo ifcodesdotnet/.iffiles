@@ -20,13 +20,14 @@
     "files.trimTrailingWhitespace": true,
 
     //update
-    "update.mode": "manual",
+    "update.mode": "default",
 
     //telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
 
     //terminal
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.defaultLocation": "editor",
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
+    "terminal.integrated.copyOnSelection": true
 }
