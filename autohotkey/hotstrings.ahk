@@ -46,3 +46,5 @@
 :*:def`n::definitely
 
 :*:specy`n::specifically
+
+:*:exp`n::explorer
