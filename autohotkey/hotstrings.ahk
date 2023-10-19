@@ -17,7 +17,7 @@
 ;         Send maintenance
 ;     }
 
-:*:arc`n::architecture
+:*:arch`n::architecture
 
 :*:maint`n::maintenance
 
@@ -27,7 +27,7 @@
 
 :*:rel`n::relative
 
-:*:spe`n::specific
+:*:spec`n::specific
 
 :*:repo`n::repository
 
@@ -42,3 +42,7 @@
 :*:sch`n::schedule
 
 :*:dir`n::directory
+
+:*:def`n::definitely
+
+:*:specy`n::specifically
