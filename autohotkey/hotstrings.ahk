@@ -48,3 +48,5 @@
 :*:specy`n::specifically
 
 :*:exp`n::explorer
+
+:*:env`n::environment
