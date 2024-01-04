@@ -10,7 +10,7 @@
       "target-directory": "AppData\\Roaming\\Code\\User"
     },
     {
-      "name": "powershell",
+      "name": "powershell-profile",
       "target-directory": "Documents\\WindowsPowerShell"
     }
   ]
