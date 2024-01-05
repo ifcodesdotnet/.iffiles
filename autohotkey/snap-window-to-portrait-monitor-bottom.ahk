@@ -14,20 +14,6 @@
         WindowXCoordinates := MonitorWorkAreaLeft
         WindowYCoordinates := MonitorWorkAreaBottom - WindowHeight
 
-        ; Class := WinGetClass("A")
-
-        ; if(Class == "CabinetWClass") {
-        ;     WindowYCoordinates := MonitorWorkAreaBottom - (WindowHeight - 3)
-        ;     WindowHeight := WindowHeight - 4
-        ; }
-        ; else if(Class == "MozillaWindowClass") {
-        ;     WindowYCoordinates := MonitorWorkAreaBottom - (WindowHeight - 3)
-        ;     WindowHeight := WindowHeight - 4
-        ; }
-        ; else {
-        ;     WindowYCoordinates := MonitorWorkAreaBottom - WindowHeight
-        ; }
-
         ; check if the window we want to snap is maximized, if the window is
         ;  maximized we need to restore it since we can't move windows that
         ;  are maximized:

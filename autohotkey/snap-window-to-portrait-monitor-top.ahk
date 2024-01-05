@@ -14,21 +14,6 @@
         WindowXCoordinates := MonitorWorkAreaLeft
         WindowYCoordinates := MonitorWorkAreaTop
 
-        ; Class := WinGetClass("A")
-
-        ; ; there is a weird issue with file explorer & firefox window borders
-        ; ;  so I'm adding some pixels from the top of the window since this was
-        ; ;  was really annoying me.
-        ; if(Class == "CabinetWClass") {
-        ;     WindowYCoordinates := MonitorWorkAreaTop + 3
-        ; }
-        ; else if(Class == "MozillaWindowClass") {
-        ;     WindowYCoordinates := MonitorWorkAreaTop + 3
-        ; }
-        ; else {
-        ;    WindowYCoordinates := MonitorWorkAreaTop
-        ; }
-
         ; check if the window we want to snap is maximized, if the window is
         ;  maximized we need to restore it since we can't move windows that
         ;  are maximized:
