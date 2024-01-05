@@ -1,40 +1,70 @@
+#Requires AutoHotkey v2.0
+#SingleInstance
+
 #+a::
 {
-    monitor := GetFirstPortraitMonitorIndex()
+    Monitor := GetFirstPortraitMonitorIndex()
 
-    if(monitor > 0) {
-        SysGet, MonitorWorkArea, MonitorWorkArea, %monitor%
+    if(Monitor > 0) {
+        MonitorGetWorkArea(Monitor, &MonitorWorkAreaLeft, &MonitorWorkAreaTop, &MonitorWorkAreaRight, &MonitorWorkAreaBottom)
 
-        height := (MonitorWorkAreaBottom - MonitorWorkAreaTop)/2
-        width := (MonitorWorkAreaRight - MonitorWorkAreaLeft)/1
+        WindowHeight := (MonitorWorkAreaBottom - MonitorWorkAreaTop)/2
+        WindowWidth := (MonitorWorkAreaRight - MonitorWorkAreaLeft)
 
-        posX := MonitorWorkAreaLeft
+        WindowXCoordinates := MonitorWorkAreaLeft
+        WindowYCoordinates := MonitorWorkAreaTop
 
-        ; To prevent the window from surpassing its intended
-        ;  boundaries, I had to modify the variable by increasing it by 3 pixels.
-        posY := MonitorWorkAreaTop + 3
+        ; Class := WinGetClass("A")
 
-        WinGet window, ID, A
+        ; ; there is a weird issue with file explorer & firefox window borders
+        ; ;  so I'm adding some pixels from the top of the window since this was
+        ; ;  was really annoying me.
+        ; if(Class == "CabinetWClass") {
+        ;     WindowYCoordinates := MonitorWorkAreaTop + 3
+        ; }
+        ; else if(Class == "MozillaWindowClass") {
+        ;     WindowYCoordinates := MonitorWorkAreaTop + 3
+        ; }
+        ; else {
+        ;    WindowYCoordinates := MonitorWorkAreaTop
+        ; }
+
+        ; check if the window we want to snap is maximized, if the window is
+        ;  maximized we need to restore it since we can't move windows that
+        ;  are maximized:
+        ;    -1 the window is minimized
+        ;    1 the window is maximized
+        ;    0 the window is neither minimized nor maximized.
+        state := WinGetMinMax("A")
+
+        if(state == 1) {
+            title := WinGetTitle("A")
+            WinRestore(title)
+        }
+
+        window := WinGetID("A")
 
         ; Use WinGetPosEx to determine position/size offsets (to remove gaps around windows)
-        WinGetPosEx(window, X, Y, realWidth, realHeight, offsetX, offsetY)
+        WinGetPosEx(window, &X, &Y, &realWidth, &realHeight, &offsetX, &offsetY)
 
         ; Move and resize the active window
-        WinMove, A,, (posX + offsetX), (posY + offsetY), (width + offsetX * -2), (height + (offsetY - 2) * -2)
+        WinMove((WindowXCoordinates + offsetX), (WindowYCoordinates + offsetY), (WindowWidth + offsetX * -2), (WindowHeight + (offsetY - 2) * -2), "A")
     }
 }
 
 GetFirstPortraitMonitorIndex() {
-    SysGet, count, MonitorCount
 
-    Loop, %count% {
-        SysGet, monitor, Monitor, %A_Index%
+    Count := MonitorGetCount()
 
-        width := monitorRight - monitorLeft
-        height := monitorBottom - monitorTop
+    Loop Count {
+        ;bounding coordinates, in pixels.
+        monitor := MonitorGet(A_Index, &Left, &Top, &Right, &Bottom)
+
+        width := Right - Left
+        height := Bottom - Top
 
         if(height > width) {
-            return %A_Index%
+             return A_Index
         }
     }
 
@@ -49,6 +79,8 @@ GetFirstPortraitMonitorIndex() {
 ;
 ;   Gets the position, size, and offset of a window. See the *Remarks* section
 ;   for more information.
+;
+;   https://www.autohotkey.com/boards/viewtopic.php?f=6&t=3392
 ;
 ; Parameters:
 ;
@@ -67,10 +99,11 @@ GetFirstPortraitMonitorIndex() {
 ;
 ; Returns:
 ;
-;   If successful, the address of a RECTPlus structure is returned.  The first
-;   16 bytes contains a RECT structure that contains the dimensions of the
-;   bounding rectangle of the specified window.  The dimensions are given in
-;   screen coordinates that are relative to the upper-left corner of the screen.
+;   If successful, a RECTPlus buffer object is returned.
+;   The first 16 bytes contains a RECT structure that contains the dimensions of the
+;   bounding rectangle of the specified window.
+;   The dimensions are given in screen coordinates that are relative to the upper-left
+;   corner of the screen.
 ;   The next 8 bytes contain the X and Y offsets (4-byte integer for X and
 ;   4-byte integer for Y).
 ;
@@ -116,78 +149,43 @@ GetFirstPortraitMonitorIndex() {
 ;
 ;   Idea and some code from *KaFu* (AutoIt forum)
 ;
-; Author:
-;
-;    jballi
-;
-; Forum Link:
-;
-;    https://autohotkey.com/boards/viewtopic.php?t=3392
 ;-------------------------------------------------------------------------------
-WinGetPosEx(hWindow,ByRef X="",ByRef Y="",ByRef Width="",ByRef Height="",ByRef Offset_X="",ByRef Offset_Y="") {
-    Static Dummy5693
-          ,RECTPlus
-          ,S_OK:=0x0
-          ,DWMWA_EXTENDED_FRAME_BOUNDS:=9
-
-    ;-- Workaround for AutoHotkey Basic
-    PtrType:=(A_PtrSize=8) ? "Ptr":"UInt"
-
+WinGetPosEx(hWindow, &X := "", &Y := "", &Width := "", &Height := "", &Offset_X := "", &Offset_Y := "") {
+    Static S_OK := 0x0,
+           DWMWA_EXTENDED_FRAME_BOUNDS := 9
     ;-- Get the window's dimensions
     ;   Note: Only the first 16 bytes of the RECTPlus structure are used by the
     ;   DwmGetWindowAttribute and GetWindowRect functions.
-    VarSetCapacity(RECTPlus,24,0)
-    DWMRC:=DllCall("dwmapi\DwmGetWindowAttribute"
-        ,PtrType,hWindow                                ;-- hwnd
-        ,"UInt",DWMWA_EXTENDED_FRAME_BOUNDS             ;-- dwAttribute
-        ,PtrType,&RECTPlus                              ;-- pvAttribute
-        ,"UInt",16)                                     ;-- cbAttribute
-
-    if (DWMRC<>S_OK)
-        {
-        if ErrorLevel in -3,-4  ;-- Dll or function not found (older than Vista)
-            {
-            ;-- Do nothing else (for now)
-            }
-         else
-            outputdebug,
-               (ltrim join`s
-                Function: %A_ThisFunc% -
-                Unknown error calling "dwmapi\DwmGetWindowAttribute".
-                RC=%DWMRC%,
-                ErrorLevel=%ErrorLevel%,
-                A_LastError=%A_LastError%.
-                "GetWindowRect" used instead.
-               )
-
-        ;-- Collect the position and size from "GetWindowRect"
-        DllCall("GetWindowRect",PtrType,hWindow,PtrType,&RECTPlus)
-        }
-
+    RECTPlus := Buffer(24,0)
+    Try {
+       DWMRC := DllCall("dwmapi\DwmGetWindowAttribute",
+                        "Ptr",  hWindow,                     ;-- hwnd
+                        "UInt", DWMWA_EXTENDED_FRAME_BOUNDS, ;-- dwAttribute
+                        "Ptr",  RECTPlus,                    ;-- pvAttribute
+                        "UInt", 16,                          ;-- cbAttribute
+                        "UInt")
+    }
+    Catch {
+       Return False
+    }
     ;-- Populate the output variables
-    X:=Left :=NumGet(RECTPlus,0,"Int")
-    Y:=Top  :=NumGet(RECTPlus,4,"Int")
-    Right   :=NumGet(RECTPlus,8,"Int")
-    Bottom  :=NumGet(RECTPlus,12,"Int")
-    Width   :=Right-Left
-    Height  :=Bottom-Top
-    OffSet_X:=0
-    OffSet_Y:=0
-
-    ;-- If DWM is not used (older than Vista or DWM not enabled), we're done
-    if (DWMRC<>S_OK)
-        Return &RECTPlus
-
+    X := NumGet(RECTPlus,  0, "Int") ; left
+    Y := NumGet(RECTPlus,  4, "Int") ; top
+    R := NumGet(RECTPlus,  8, "Int") ; right
+    B := NumGet(RECTPlus, 12, "Int") ; bottom
+    Width    := R - X ; right - left
+    Height   := B - Y ; bottom - top
+    OffSet_X := 0
+    OffSet_Y := 0
     ;-- Collect dimensions via GetWindowRect
-    VarSetCapacity(RECT,16,0)
-    DllCall("GetWindowRect",PtrType,hWindow,PtrType,&RECT)
-    GWR_Width :=NumGet(RECT,8,"Int")-NumGet(RECT,0,"Int")
-        ;-- Right minus Left
-    GWR_Height:=NumGet(RECT,12,"Int")-NumGet(RECT,4,"Int")
-        ;-- Bottom minus Top
-
+    RECT := Buffer(16, 0)
+    DllCall("GetWindowRect", "Ptr", hWindow,"Ptr", RECT)
+    ;-- Right minus Left
+    GWR_Width := NumGet(RECT,  8, "Int") - NumGet(RECT, 0, "Int")
+    ;-- Bottom minus Top
+    GWR_Height:= NumGet(RECT, 12, "Int") - NumGet(RECT, 4, "Int")
     ;-- Calculate offsets and update output variables
-    NumPut(Offset_X:=(Width-GWR_Width)//2,RECTPlus,16,"Int")
-    NumPut(Offset_Y:=(Height-GWR_Height)//2,RECTPlus,20,"Int")
-    Return &RECTPlus
-}
+    NumPut("Int", Offset_X := (Width  - GWR_Width)  // 2, RECTPlus, 16)
+    NumPut("Int", Offset_Y := (Height - GWR_Height) // 2, RECTPlus, 20)
+    Return RECTPlus
+ }
