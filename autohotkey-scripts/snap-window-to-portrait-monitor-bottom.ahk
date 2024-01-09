@@ -1,6 +1,8 @@
 #Requires AutoHotkey v2.0
 #SingleInstance
-#Include C:\Users\%A_UserName%\.iffiles\autohotkey-library\common-autohotkey-functions.ahk
+; #Include C:\Users\%A_UserName%\.iffiles\autohotkey-library\common-autohotkey-functions.ahk
+#Include <GetFirstPortraitMonitorIndex>
+#Include <WinGetPosEx>
 
 #+z::
 {
