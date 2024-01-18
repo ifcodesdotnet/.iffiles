@@ -7,15 +7,9 @@
 ;     Documentation for how to create hotstrings
 ;   https://www.autohotkey.com/docs/v2/Hotstrings.htm#EndChars
 ;     Documentation for explaining how Ending Characters work in hotstrings
-; Issues:
-;   When using Notepad on Windows 11 hotstrings are not automatically
-;   generated. To get hotstrings to generate I need to type the hotstring and
-;   move the text cursor to the left of the hotstring to get the remaining
-;   characters to generate. I can use the following alternative technique:
-;     :*:maint`n::
-;     {
-;         Send maintenance
-;     }
+
+#Requires AutoHotkey v2.0
+#SingleInstance
 
 :*:arch`n::architecture
 

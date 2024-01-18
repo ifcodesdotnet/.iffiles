@@ -6,7 +6,10 @@
 ;   https://www.autohotkey.com/docs/v2/Hotkeys.htm
 ;     Link to hotkey documentation
 
+#Requires AutoHotkey v2.0
+#SingleInstance
+
 #+q::
 {
-    Send !{F4}
+    Send "!{F4}"
 }
