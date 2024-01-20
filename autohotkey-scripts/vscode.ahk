@@ -7,10 +7,16 @@
 ;
 ;   https://www.autohotkey.com/docs/v2/Variables.htm#os
 ;     Link to documentation about operating system and user info variables
+;
+;   https://stackoverflow.com/questions/66432537/how-to-use-multiple-paramenter-in-run-command-in-autohotkey-v2
+;      Link to post about how to use the run command in ahk v2
+
+#Requires AutoHotkey v2.0
+#SingleInstance
 
 #+c::
 {
-    vscode_absolute_path := StrReplace(A_AppData, "Roaming", "Local\Programs\Microsoft VS Code\Code.exe")
+    path := StrReplace(A_AppData, "Roaming", "Local\Programs\Microsoft VS Code\Code.exe")
 
-    Run, %vscode_absolute_path% "C:\Users\%A_UserName%\.iffiles"
+    Run path . " " . "C:\Users\" . A_UserName . "\.iffiles"
 }
