@@ -16,7 +16,9 @@
 
 #+c::
 {
-    path := StrReplace(A_AppData, "Roaming", "Local\Programs\Microsoft VS Code\Code.exe")
+    VscodePath := "C:\Users\" . A_UserName . "\Roaming\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 
-    Run path . " " . "C:\Users\" . A_UserName . "\.iffiles"
+    DotfilesPath := "C:\Users\" . A_UserName . "\.iffiles"
+
+    Run VscodePath . " " . DotfilesPath
 }
