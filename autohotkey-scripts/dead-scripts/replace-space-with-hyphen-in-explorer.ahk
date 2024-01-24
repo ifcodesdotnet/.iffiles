@@ -7,6 +7,8 @@
 ;     Link to remapping keys documentation
 ;   https://www.autohotkey.com/docs/v2/lib/_HotIf.htm
 ;     Link to #HotIf documentation
+#Requires AutoHotkey v2.0
+#SingleInstance
 
 #HotIf WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
 Space::-

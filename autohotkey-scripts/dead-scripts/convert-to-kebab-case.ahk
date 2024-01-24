@@ -8,7 +8,7 @@
 ;     Documentation for how to use A_Clipboard to access the clipboard
 
 #Requires AutoHotkey v2.0
-
+#SingleInstance
 #+k::
 {
     ; Save the current clipboard to eventually restore it once this script is
