@@ -10,6 +10,6 @@
 #Requires AutoHotkey v2.0
 #SingleInstance
 
-;#HotIf WinActive("ahk_exe explorer.exe ahk_class WorkerW")
-#HotIf WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+; this will repace spaces with hypens in file explorer and on the windows desktop
+#HotIf WinActive("ahk_exe explorer.exe ahk_class CabinetWClass") or WinActive("ahk_exe explorer.exe ahk_class WorkerW")
 Space::-
