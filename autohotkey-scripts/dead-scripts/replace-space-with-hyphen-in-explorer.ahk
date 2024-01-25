@@ -10,5 +10,6 @@
 #Requires AutoHotkey v2.0
 #SingleInstance
 
+;#HotIf WinActive("ahk_exe explorer.exe ahk_class WorkerW")
 #HotIf WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
 Space::-
