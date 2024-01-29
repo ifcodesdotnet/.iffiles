@@ -10,6 +10,10 @@
       "target-directory": "AppData\\Roaming\\Code\\User"
     },
     {
+      "name": "autohotkey-library",
+      "target-directory": "\\Documents\\AutoHotKey\\Lib"
+    },
+    {
       "name": "powershell-profile",
       "target-directory": "Documents\\WindowsPowerShell"
     }
