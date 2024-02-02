@@ -16,7 +16,8 @@
 
 #+c::
 {
-    VscodePath := "C:\Users\" . A_UserName . "\Roaming\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+
+    VscodePath := "C:\Users\" . A_UserName . "\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 
     DotfilesPath := "C:\Users\" . A_UserName . "\.iffiles"
 
