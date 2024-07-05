@@ -12,22 +12,21 @@
 
 ## AutoHotKey Scripts
 - Hotkeys:
-  - `Win` + `Shift` + `Q`
-    - Remap for `Alt` + `F4` via the [close-application.ahk](autohotkey-scripts/close-application.ahk) script.
-  - `Win` + `Shift` + `0`
-    - Shortcut for muting my volume via the [volume-control.ahk](autohotkey-scripts/volume-control.ahk) script.
-  - `Win` + `Shift` + `-`
-    - Shortcut for my decreasing my volume via the [volume-control.ahk](autohotkey-scripts/volume-control.ahk) script.
-  - `Win` + `Shift` + `+`
-    - Shortcut for increasing my volume via the [volume-control.ahk](autohotkey-scripts/volume-control.ahk) script.
-- Application Shortcuts:
-  - `Win` + `Shift` + `C`
-    - Shortcut for opening up my .dotfiles in vscode via the [open-vscode.ahk](autohotkey-scripts/open-vscode.ahk) script.
+  - `windows` + `shift` + `q`
+    - Remap for `alt` + `f4`
+  - `windows` + `shift` + `0`
+    - Mutes the volume
+  - `windows` + `shift` + `_`
+    - Lowers the volumne by 2
+  - `windows` + `shift` + `+`
+    - Raises the volume by 2
+  - `windows` + `shift` + `c`
+    - Opens my .dotfiles repository in vscode
 - Window Management:
-  - `Win` + `Shift` + `A`
-    - Shortcut for snapping the active window to the top of my portrait mode monitor via the [snap-window-to-portrait-monitor-top.ahk](autohotkey-scripts/snap-window-to-portrait-monitor-top.ahk) script.
-  - `Win` + `Shift` + `Z`
-    - Shortcut for snapping the active window to the bottom of my portrait mode monitor via the [snap-window-to-portrait-monitor-bottom.ahk](autohotkey-scripts/snap-window-to-portrait-monitor-bottom.ahk) script.
+  - `windows` + `shift` + `a`
+    - Snaps the active window to the top of my portrait mode monitor
+  - `windows` + `shift` + `z`
+    - Snaps the active window to the bottom of my portrait mode monitor
 
 ## Visual Studio Code Extensions
 - rhalaly.scope-to-this
