@@ -1,6 +1,0 @@
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\autohotkey-library\*" -Destination "$env:USERPROFILE\Documents\AutoHotKey\Lib\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\autohotkey-scripts\*" -Destination "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\gitbash\*" -Destination "$env:USERPROFILE\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\personal-git\*" -Destination "$env:USERPROFILE\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\powershell-profile\*" -Destination "$env:USERPROFILE\Documents\WindowsPowerShell"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\vscode\*" -Destination "$env:USERPROFILE\AppData\Roaming\Code\User"
