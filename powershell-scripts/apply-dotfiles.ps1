@@ -1,6 +1,18 @@
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\autohotkey-library\*" -Destination "$env:USERPROFILE\Documents\AutoHotKey\Lib\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\autohotkey-scripts\*" -Destination "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\gitbash\*" -Destination "$env:USERPROFILE\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\personal-git\*" -Destination "$env:USERPROFILE\"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\powershell-profile\*" -Destination "$env:USERPROFILE\Documents\WindowsPowerShell"
-Copy-Item -Force -Path "$env:USERPROFILE\.iffiles\vscode\*" -Destination "$env:USERPROFILE\AppData\Roaming\Code\User"
+param (
+    [string]
+    $path = $env:USERPROFILE + "\.iffiles\configuration-targets-personal.json"
+)
+
+# The -Raw parameter here will bring back the contents of the file as a single string
+#  as opposed to an array of lines.
+$json = Get-Content -Raw -Path $path
+
+$targets = $json | ConvertFrom-Json
+
+foreach ($configuration in $targets.configurations) {
+    $source = $env:USERPROFILE + "\.iffiles\" + $configuration.'name'
+
+    $target = $env:USERPROFILE + "\" + $configuration.'target-directory'
+
+    Copy-Item -Force -Path "$source\*"  -Destination $target
+}
