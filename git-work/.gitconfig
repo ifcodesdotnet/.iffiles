@@ -1,0 +1,85 @@
+[user]
+	name = Ismael Fernandez
+	email = 99407162+ace-ifern@users.noreply.github.com
+[core]
+	editor = code --wait
+[push]
+	# automatically sets up a remote tracking branch for new local branches when you first push
+	#  to their remote repository.
+	autoSetupRemote = true
+[alias]
+	# general aliases
+	ls = log --oneline --abbrev-commit
+	st = status --short --branch
+	goto = checkout
+	g = goto
+
+	# using git add --all instead of git add . because git add --all stages
+	#  all changes within the repository, including deletions, while git add .
+	#  only stages changes within the current directory.
+	checkin = "!f() { git add --all && git commit --message \"$1\"; }; f"
+	ci = checkin
+
+	# git clean --force will delete all untracked files and directories
+	#  from the repository, and git reset --hard HEAD will reset the repository
+	#  state to match that of the most recent commit on the current branch
+	#  (the HEAD pointer).
+	undo ="!f() { git clean --force && git reset --hard HEAD; }; f"
+	u =  undo
+
+	# aliases for listing branches
+	Get-Branch = branch --verbose
+	gb = Get-Branch
+	Get-BranchLocal = branch --verbose
+	gbl = Get-BranchLocal
+	Get-BranchRemote = branch --remotes --verbose
+	gbr = Get-BranchRemote
+	Get-BranchAll = branch --all --verbose
+	gba = Get-BranchAll
+
+	# aliases for creating branches
+	New-Branch = "!f() { git branch \"$1\" && git checkout \"$1\"; }; f"
+	nb = New-Branch
+	New-BranchLocal = "!f() { git branch \"$1\" && git checkout \"$1\"; }; f"
+	nbl = New-BranchLocal
+	New-BranchRemote = "!f() { git branch \"$1\" && git checkout \"$1\" && git push --set-upstream origin \"$1\"; }; f"
+	nbr = New-BranchRemote
+
+	# aliases for removing branches
+	Remove-Branch = branch --delete --force
+	rb = Remove-Branch
+	Remove-BranchLocal = branch --delete --force
+	rbl = Remove-BranchLocal
+	Remove-BranchRemote = "!f() { git push origin --delete \"$1\"; }; f"
+	rbr = Remove-BranchRemote
+
+	# aliases for manipulating HEAD pointer
+
+	# list modifications captured in HEAD pointer
+	Get-Head = show --name-status --oneline HEAD
+	gh = Get-Head
+
+	# update HEAD pointer with current modifications without updating title and description
+	Update-HeadCommit = "!f() { git add --all && git commit --amend --no-edit; }; f"
+	uhc = Update-HeadCommit
+
+	# update HEAD pointer title and description without opening default editor
+	Update-HeadMessage = "!f() { git commit --amend --message \"$1\" --message \"$2\"; }; f"
+	uhm = Update-HeadMessage
+
+	# I rewrite history a lot when I work so having something that will just get the latest version of
+	#  code from the remote and overrwrite whatever commits I have locally will help a lot when I'm
+	#  working between machines..
+	#
+	# This command will fail if I'm on a detached head
+	#  git symbolic-ref --short HEAD
+
+	# get the lastest commits from the current branch, cleaning the local repository before resetting
+	#  the branch to match the remote repository
+    Get-Latest = "!f() { \
+        branch=$(git symbolic-ref --short HEAD); \
+        git fetch origin \"$branch\";            \
+        git clean --force;                       \
+        git reset --hard origin/\"$branch\";      \
+    }; f"
+	gl = Get-Latest

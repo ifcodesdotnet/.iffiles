@@ -1,5 +1,6 @@
 # aliases for commands
 Set-Alias -Name c -Value Clear-Host;
+Set-Alias -Name g -Value git;
 
 $env:PATH += ";$env:USERPROFILE\.iffiles\powershell-scripts"
 
