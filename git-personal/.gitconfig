@@ -1,0 +1,36 @@
+[user]
+	name = Ismael Fernandez
+	email = 69177486+ifcodesdotnet@users.noreply.github.com
+[core]
+	editor = code --wait
+[alias]
+	# general aliases
+	ls = log --oneline --abbrev-commit
+	st = status --short --branch
+	goto = checkout
+
+	# using git add --all instead of git add . because git add --all stages
+	#  all changes within the repository, including deletions, while git add .
+	#  only stages changes within the current directory.
+	checkin = "!f() { git add --all && git commit --message \"$1\"; }; f"
+
+	# git clean --force will delete all untracked files and directories
+	#  from the repository, and git reset --hard HEAD will reset the repository
+	#  state to match that of the most recent commit on the current branch
+	#  (the HEAD pointer).
+	undo ="!f() { git clean --force && git reset --hard HEAD; }; f"
+
+	# branch aliases
+	create-branch = "!f() { git branch \"$1\" && git checkout \"$1\"; }; f"
+
+	list-branches = branch --verbose
+	list-branches-local = branch --verbose
+	list-branches-remote = branch --remotes --verbose
+	list-branches-all = branch --all --verbose
+	update-branch = branch --move
+	delete-branch = branch --delete --force
+
+	# head aliases
+	update-head-message = commit --amend
+	update-head-content = "!f() { git add --all && git commit --amend --no-edit; }; f"
+	list-head = show --name-status --oneline HEAD

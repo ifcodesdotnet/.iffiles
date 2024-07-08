@@ -1,15 +1,7 @@
-; Script Name: hotstrings.ahk
-; Description: AutoHotkey hotstrings for words I typically misspell. Hotstrings
-;              can be triggered by typing hotstring followed by enter
-; GitHub Repository: https://github.com/ifcodesdotnet/.iffiles
-; References:
-;   https://www.autohotkey.com/docs/v2/Hotstrings.htm
-;     Documentation for how to create hotstrings
-;   https://www.autohotkey.com/docs/v2/Hotstrings.htm#EndChars
-;     Documentation for explaining how Ending Characters work in hotstrings
-
 #Requires AutoHotkey v2.0
 #SingleInstance
+
+; hotstrings for words
 
 :*:arch`n::architecture
 
@@ -46,3 +38,35 @@
 :*:env`n::environment
 
 :*:cor`n::correspond
+
+; hotstrings for git
+:*:git check::
+:*:g check::
+{
+  Send("git checkin `"`"")
+  Send '{Left}'
+}
+
+:*:git list-b::
+:*:g list-b::
+{
+  Send("git list-branches")
+}
+
+:*:git create-b::
+:*:g create-b::
+{
+  Send("git create-branch")
+}
+
+:*:git update-b::
+:*:g update-b::
+{
+  Send( "git update-branch")
+}
+
+:*:git delete-b::
+:*:g delete-b::
+{
+  Send("git delete-branch")
+}
