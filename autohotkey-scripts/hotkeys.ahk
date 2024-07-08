@@ -44,6 +44,15 @@
     Send "{Volume_Mute}"
 }
 
+; Remaps hyphen (-) to capslock
+;  I can still use the regular functionality of capslock by using shift + capslock:
+;  https://www.autohotkey.com/docs/v2/misc/Remap.htm#other-useful-remappings
++CapsLock::CapsLock
+CapsLock::-
+
+; Start context-sensitive hotkeys
+;  https://www.autohotkey.com/docs/v2/lib/_HotIf.htm
+
 ; Replaces spaces with hyphens when File Explorer is the active window or when the Desktop is active
 #HotIf WinActive("ahk_exe explorer.exe")
 Space::-
