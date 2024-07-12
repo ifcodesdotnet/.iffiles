@@ -3,7 +3,7 @@
 
 ## Quick Apply .dotfiles
 ```powershell
-& "$env:USERPROFILE\.iffiles\powershell-scripts\apply-dotfiles.ps1"
+& "$env:USERPROFILE\.iffiles\powershell-scripts\dotfiles-apply.ps1"
 ```
 ## Windows Dependencies
 - autohotkey
