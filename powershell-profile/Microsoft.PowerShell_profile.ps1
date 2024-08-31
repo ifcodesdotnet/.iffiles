@@ -36,7 +36,10 @@ function d {
     Set-Location -Path "$env:USERPROFILE\Desktop\"
 }
 
-function h
-{
-    Set-Location -Path "$env:USERPROFILE\"
+if (Get-Alias -Name h -ErrorAction SilentlyContinue) {
+    Remove-Item Alias:h
+}
+
+function h {
+    Set-Location "$env:USERPROFILE"
 }
