@@ -29,7 +29,6 @@
 :*:cor`n::correspond
 :*:des`n::destructuring
 :*:art`n::artifactory
-:*:ahk`n::autohotkey
 
 ; hotstrings for git
 
