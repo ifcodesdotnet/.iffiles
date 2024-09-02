@@ -30,6 +30,8 @@
 :*:exp`n::explorer
 :*:env`n::environment
 :*:cor`n::correspond
+:*:des`n::destructuring
+:*:art`n::artifactory
 
 ; hotstrings for git
 :*:git c`n::
