@@ -17,7 +17,7 @@
 	# using git add --all instead of git add . because git add --all stages
 	#  all changes within the repository, including deletions, while git add .
 	#  only stages changes within the current directory.
-	checkin = "!f() { git add --all && git commit --message \"$1\"; }; f"
+	checkin = "!f() { git add --all && git commit; }; f"
 	ci = checkin
 
 	# git clean --force will delete all untracked files and directories
@@ -63,8 +63,8 @@
 	Update-HeadCommit = "!f() { git add --all && git commit --amend --no-edit; }; f"
 	uhc = Update-HeadCommit
 
-	# update HEAD pointer title and description without opening default editor
-	Update-HeadMessage = "!f() { git commit --amend --message \"$1\" --message \"$2\"; }; f"
+	# update HEAD pointer title and description
+	Update-HeadMessage = "!f() { git commit --amend; }; f"
 	uhm = Update-HeadMessage
 
 	# I rewrite history a lot when I work so having something that will just get the latest version of
