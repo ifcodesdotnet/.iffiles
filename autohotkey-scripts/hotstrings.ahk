@@ -2,35 +2,45 @@
 #SingleInstance
 
 ; hotstrings for words I hate spelling and their different forms and tenses
-:*:repo`n::repository
-:*:repos`n::repositories
-
+  ; d
 :*:dep`n::dependency
 :*:deps`n::dependencies
 
 :*:dir`n::directory
 :*:dirs`n::directories
-
+  ; e
 :*:eng`n::engineer
 :*:engs`n::engineers
 :*:enging`n::engineering
+  ; r
+:*:repo`n::repository
+:*:repos`n::repositories
+  ; s
+:*:spec`n::specific
+:*:specs`n::specifics
+:*:specy`n::specifically
 
 ; hotstrings for words I hate spelling
-:*:arch`n::architecture
-:*:maint`n::maintenance
-:*:rel`n::relative
-:*:spec`n::specific
-:*:rec`n::receive
-:*:sch`n::schedule
-:*:def`n::definitely
-:*:specy`n::specifically
-:*:exp`n::explorer
-:*:env`n::environment
-:*:cor`n::correspond
-:*:des`n::destructuring
-:*:art`n::artifactory
+  ; a
 :*:ahk`n::autohotkey
-
+:*:arch`n::architecture
+:*:art`n::artifactory
+  ; c
+:*:cor`n::correspond
+  ; d
+:*:def`n::definitely
+:*:des`n::destructuring
+  ; e
+:*:env`n::environment
+:*:exp`n::explorer
+  ; m
+:*:maint`n::maintenance
+  ; r
+:*:rec`n::receive
+:*:rel`n::relative
+  ; s
+:*:sch`n::schedule
+ 
 ; hotstrings for words I misspell
 :*:teh::the
 :*:hte::the
