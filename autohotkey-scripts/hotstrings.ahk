@@ -40,7 +40,7 @@
 :*:rel`n::relative
   ; s
 :*:sch`n::schedule
- 
+
 ; hotstrings for words I misspell
 :*:teh::the
 :*:hte::the
@@ -58,21 +58,6 @@
 :*?:a`n::all
 
 ; hotstrings for powershell
-:*:pp`n::
-{
-  Send("C:\Users\" . A_UserName . "\.iffiles\personal.json")
-}
-
-:*:ww`n::
-{
-  Send("C:\Users\" . A_UserName . "\.iffiles\work.json")
-}
-
-:*:tt`n::
-{
-  Send("C:\Users\" . A_UserName . "\.iffiles\test.json")
-}
-
 :*:rr`n::
 {
   Send(". $PROFILE")
