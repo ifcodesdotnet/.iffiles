@@ -39,23 +39,7 @@
 ; https://www.autohotkey.com/docs/v2/Hotstrings.htm#Options
 :*?:b`n::branch
 
-:*:checkin::
-{
-  Send("checkin `"`"")
-  Send '{Left}'
-}
 
-:*:ci::
-{
-  Send("ci `"`"")
-  Send '{Left}'
-}
-
-:*:uhm::
-{
-  Send("uhm `"`" `"")
-  Send '{Left 3}'
-}
 
 ; hotstrings for powershell
 
