@@ -4,11 +4,9 @@
 > How to get around...
 - Each directory within the repository corresponds to a group of dotfiles.
   - To reduce the complexity of my dotfiles management scripts each dotfiles directory is flat (no sub-directories).
-- To reduce the complexity of maintaining all my dotfiles I have some directories repeated based on context.
-  - Instead of maintaining separate repositories for personal use, work, or school, I've chosen to keep everything in a single repository, with different directory names corresponding to each context.
-- Each json file within the root directory of the repository corresponds to the execution context of my dotfiles management scripts. They contain the following metadata pertaining to my dotfiles:
+- The json file within the root directory of the repository contains the configuration metadata necessary managing configurations on the host machine:
   - Name of each dotfiles directory.
-  - "Directory where the contents of each dotfiles directory need to be copied.
+  - Directory where the contents of each dotfiles folder should be copied to apply configurations to the host machine.
 
 ## Naming Convention
 > I'm sick of forgetting the name of a script or shortcut...
