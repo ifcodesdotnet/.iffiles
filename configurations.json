@@ -1,0 +1,27 @@
+[
+  {
+      "name": "autohotkey-scripts",
+      "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup",
+      "dependencies": null
+  },
+  {
+      "name": "vscode",
+      "target-directory": "AppData\\Roaming\\Code\\User",
+      "dependencies": null
+  },
+  {
+      "name": "powershell-profile",
+      "target-directory": "Documents\\WindowsPowerShell",
+      "dependencies": null
+  },
+  {
+    "name": "autohotkey-library",
+    "target-directory": "Documents\\AutoHotKey\\Lib",
+    "dependencies": null
+  },
+  {
+    "name": "git",
+    "target-directory": null,
+    "dependencies": null
+  }
+]

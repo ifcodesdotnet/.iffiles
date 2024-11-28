@@ -155,7 +155,7 @@ function Update-Configuration {
     foreach ($configuration in $configurations) {
 
         if ([string]::IsNullOrEmpty($($target))) {
-            $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$target")
+            $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$configuration")
         }
         else {
             $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$($target)", "$configuration")
