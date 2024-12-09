@@ -1,6 +1,12 @@
+# remove default aliases
+if (Get-Alias h -ErrorAction SilentlyContinue) {
+    Remove-Item Alias:h
+}
+
 # aliases for commands
 Set-Alias -Name c -Value Clear-Host;
 Set-Alias -Name g -Value git;
+Set-Alias -Name q -Value exit;
 
 $env:PATH += ";$env:USERPROFILE\.iffiles\powershell-scripts"
 
@@ -30,7 +36,6 @@ function .. {
 function ... {
     Set-Location -Path "../.."
 }
-
 
 function d {
     Set-Location -Path "$env:USERPROFILE\Desktop\"
