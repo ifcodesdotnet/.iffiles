@@ -1,4 +1,4 @@
-Import-Module .\powershell-modules\Configuration-Management.psm1
+Import-Module $([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
 
 function main {
 
