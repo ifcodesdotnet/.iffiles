@@ -42,10 +42,13 @@
 :*:sch`n::schedule
 
 ; hotstrings for words I misspell
+  ; the
 :*:teh::the
 :*:hte::the
 :*:thw::the
 :*:thd::the
+  ; how
+:*:hwo::how
 
 ; hotstrings for git
 ; using the ? option here so that I can trigger the hotstring
