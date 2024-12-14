@@ -44,6 +44,108 @@
     Send "{Volume_Mute}"
 }
 
+; The below hotstrings will use a different syntax that accounts for targeting both left and right
+;   variations of modifier keys.
+;  https://www.autohotkey.com/docs/v2/KeyList.htm
+
+; Delete one character at a time with windows + shift + backspace
+<#<+BackSpace::
+{
+    Send "{Del}"
+}
+
+; Delete one word at a time with control + shift + backspace
+<^<+BackSpace::
+{
+    Send "^{Del}"
+}
+
+; vim movement
+; Move left with windows + shift + h
+<#+h::
+{
+    Send "{Left}"
+}
+
+; Move down with windows + shift + j
+<#+j::
+{
+    Send "{Down}"
+}
+
+; Move up with windows + shift + k
+<#+k::
+{
+    Send "{Up}"
+}
+
+; Move right with windows + shift + l
+<#+l::
+{
+    Send "{Right}"
+}
+
+; Move left and right one word at a time, move up and down on line at a time
+; Move left one word at a time with control + left
+<^+h::
+{
+    Send "^{Left}"
+}
+
+; Move down with windows + shift + j
+<^+j::
+{
+    Send "{Down}"
+}
+
+; Move up with windows + shift + k
+<^+k::
+{
+    Send "{Up}"
+}
+
+; Move right one word at a time with control + right
+<^+l::
+{
+    Send "^{Right}"
+}
+
+; Highlight one word at a time with left control + left shift + right shift + left
+<^<+>+h::
+{
+    Send "^+{Left}"
+}
+
+; Highlight one word at a time with left control + left shift + right shift + right
+<^<+>+l::
+{
+    Send "^+{Right}"
+}
+
+; Move to the end of a line with windows + right
+#+Right::
+{
+    Send "{End}"
+}
+
+; Move to the start of a line with windows + left
+#+Left::
+{
+    Send "{Home}"
+}
+
+; Highlight the entire line from right to end
+<^+Right::
+{
+    Send "+{End}"
+}
+
+; Highlight the entire line from left to start
+<^+Left::
+{
+    Send "+{Home}"
+}
+
 ; Remaps hyphen (-) to capslock
 ;  I can still use the regular functionality of capslock by using shift + capslock:
 ;  https://www.autohotkey.com/docs/v2/misc/Remap.htm#other-useful-remappings
