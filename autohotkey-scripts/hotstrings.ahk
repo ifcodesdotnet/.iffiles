@@ -12,6 +12,8 @@
 :*:eng`n::engineer
 :*:engs`n::engineers
 :*:enging`n::engineering
+:*:ex`n::example
+:*:exs`n::examples
   ; r
 :*:repo`n::repository
 :*:repos`n::repositories
@@ -25,6 +27,8 @@
 :*:ahk`n::autohotkey
 :*:arch`n::architecture
 :*:art`n::artifactory
+  ;b
+:*:br`n::branch
   ; c
 :*:cor`n::correspond
   ; d
@@ -33,29 +37,30 @@
   ; e
 :*:env`n::environment
 :*:exp`n::explorer
+  ;l
+:*:lo`n::local
   ; m
 :*:maint`n::maintenance
   ; r
 :*:rec`n::receive
 :*:rel`n::relative
+:*:re`n::remote
   ; s
 :*:sch`n::schedule
+:*:stra`n::strategy
+:*:stru`n::structure
 
 ; hotstrings for words I misspell
+  ; the
 :*:teh::the
 :*:hte::the
 :*:thw::the
 :*:thd::the
-
-; hotstrings for git
-; using the ? option here so that I can trigger the hotstring
-;  even when I'm inside another word. I'm using this hotstring
-;  a lot when I'm working with my aliases for branches
-; https://www.autohotkey.com/docs/v2/Hotstrings.htm#Options
-:*?:b`n::branch
-:*?:lo`n::local
-:*?:re`n::remote
-:*?:a`n::all
+  ; this
+:*:htis::this
+:*:thsi::this
+  ; how
+:*:hwo::how
 
 ; hotstrings for powershell
 :*:rr`n::
