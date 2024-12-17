@@ -31,12 +31,27 @@ function ... {
     Set-Location -Path "../.."
 }
 
-
+# take me to my desktop directory
 function d {
     Set-Location -Path "$env:USERPROFILE\Desktop\"
 }
 
-function h
-{
-    Set-Location -Path "$env:USERPROFILE\"
+# take me to my home directory
+function h {
+    Set-Location -Path "$env:USERPROFILE"
+}
+
+# quit
+function q {
+    Invoke-command -ScriptBlock {exit}
+}
+
+# take me to my powershell scripts
+function s {
+    Set-Location -Path $($([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "powershell-scripts")))
+}
+
+# take me to my .dotfiles directory
+function i {
+    Set-Location -Path $($([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles")))
 }
