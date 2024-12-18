@@ -146,6 +146,12 @@
     Send "+{Home}"
 }
 
+; Open windows terminal with windows + shift + enter
+#+Enter::
+{
+  Run "wt.exe"
+}
+
 ; Remaps hyphen (-) to capslock
 ;  I can still use the regular functionality of capslock by using shift + capslock:
 ;  https://www.autohotkey.com/docs/v2/misc/Remap.htm#other-useful-remappings
