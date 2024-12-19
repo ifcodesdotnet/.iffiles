@@ -60,46 +60,46 @@
     Send "^{Del}"
 }
 
-; vim movement
+; movement
 ; Move left with windows + shift + h
-<#+h::
-{
-    Send "{Left}"
-}
+; <#+j::
+; {
+;     Send "{Left}"
+; }
 
 ; Move down with windows + shift + j
-<#+j::
-{
-    Send "{Down}"
-}
+; <#+k::
+; {
+;     Send "{Down}"
+; }
 
-; Move up with windows + shift + k
-<#+k::
-{
-    Send "{Up}"
-}
+; ; Move up with windows + shift + k
+; <#+i::
+; {
+;     Send "{Up}"
+; }
 
-; Move right with windows + shift + l
-<#+l::
-{
-    Send "{Right}"
-}
+; ; Move right with windows + shift + l
+; <#+l::
+; {
+;     Send "{Right}"
+; }
 
 ; Move left and right one word at a time, move up and down on line at a time
 ; Move left one word at a time with control + left
-<^+h::
+<^+j::
 {
     Send "^{Left}"
 }
 
-; Move down with windows + shift + j
-<^+j::
+; Move down with windows + shift + k
+<^+k::
 {
     Send "{Down}"
 }
 
 ; Move up with windows + shift + k
-<^+k::
+<^+i::
 {
     Send "{Up}"
 }
@@ -168,3 +168,67 @@ Space::-
 ; Replaces spaces with hyphens when the Save As prompt in File Explorer is the active window
 #HotIf WinActive("Save As")
 Space::-
+
+
+; https://www.reddit.com/r/AutoHotkey/comments/124x43b/if_i_set_up_two_normal_keys_as_hotkey_can_not_use/
+;  don't use & since it will block the first key...
+
+; ; ; reference code...
+; ; ; Highlight one word at a time with left control + left shift + right shift + left
+; ; <^<+>+h::
+; ; {
+; ;     Send "^+{Left}"
+; ; }
+
+#HotIf GetKeyState(";", "P")
+j::
+{
+    Send "^+{Left}"
+}
+
+l::
+{
+    Send "^+{Right}"
+}
+#HotIf
+
+
+
+<#+j::
+{
+    Send "{Left}"
+}
+
+<#+k::
+{
+    Send "{Down}"
+}
+
+<#+i::
+{
+    Send "{Up}"
+}
+
+<#+l::
+{
+    Send "{Right}"
+}
+
+; delete single letter at a time
+; windows shift backspace
+;
+; delete word by word
+; control shift backspace
+
+; move a single letter at a time
+; left windows + left shift
+
+; move word by word
+; control shift keys
+
+
+
+; highlight a single letter at a time
+; i can use the ; key for this...
+; highlight word by word at a time
+; i can use the ; key for this...
