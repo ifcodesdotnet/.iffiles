@@ -215,6 +215,15 @@ k::
 {
     Send "{Down}"
 }
+
+
+
+; this will handle moving to the right word by word...
+<^l::
+{
+    Send "^{Right}"
+}
+
 #HotIf
 
 ; k::
