@@ -214,6 +214,13 @@ l::
     Send "{Right}"
 }
 
+
+
+
+
+
+
+
 ; delete single letter at a time
 ; windows shift backspace
 ;
@@ -230,5 +237,9 @@ l::
 
 ; highlight a single letter at a time
 ; i can use the ; key for this...
+
 ; highlight word by word at a time
 ; i can use the ; key for this...
+
+
+; how to move to the start and end of line..
