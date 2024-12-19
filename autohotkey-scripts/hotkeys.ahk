@@ -87,70 +87,171 @@
 
 ; Move left and right one word at a time, move up and down on line at a time
 ; Move left one word at a time with control + left
-<^+j::
-{
-    Send "^{Left}"
-}
+; <^+j::
+; {
+;     Send "^{Left}"
+; }
 
-; Move down with windows + shift + k
-<^+k::
-{
-    Send "{Down}"
-}
+; ; Move down with windows + shift + k
+; <^+k::
+; {
+;     Send "{Down}"
+; }
 
-; Move up with windows + shift + k
-<^+i::
-{
-    Send "{Up}"
-}
+; ; Move up with windows + shift + k
+; <^+i::
+; {
+;     Send "{Up}"
+; }
 
-; Move right one word at a time with control + right
-<^+l::
-{
-    Send "^{Right}"
-}
+; ; Move right one word at a time with control + right
+; <^+l::
+; {
+;     Send "^{Right}"
+; }
 
-; Highlight one word at a time with left control + left shift + right shift + left
-<^<+>+h::
-{
-    Send "^+{Left}"
-}
+; ; Highlight one word at a time with left control + left shift + right shift + left
+; <^<+>+h::
+; {
+;     Send "^+{Left}"
+; }
 
-; Highlight one word at a time with left control + left shift + right shift + right
-<^<+>+l::
-{
-    Send "^+{Right}"
-}
+; ; Highlight one word at a time with left control + left shift + right shift + right
+; <^<+>+l::
+; {
+;     Send "^+{Right}"
+; }
 
-; Move to the end of a line with windows + right
-#+Right::
-{
-    Send "{End}"
-}
+; ; Move to the end of a line with windows + right
+; #+Right::
+; {
+;     Send "{End}"
+; }
 
-; Move to the start of a line with windows + left
-#+Left::
-{
-    Send "{Home}"
-}
+; ; Move to the start of a line with windows + left
+; #+Left::
+; {
+;     Send "{Home}"
+; }
 
-; Highlight the entire line from right to end
-<^+Right::
-{
-    Send "+{End}"
-}
+; ; Highlight the entire line from right to end
+; <^+Right::
+; {
+;     Send "+{End}"
+; }
 
-; Highlight the entire line from left to start
-<^+Left::
-{
-    Send "+{Home}"
-}
+; ; Highlight the entire line from left to start
+; <^+Left::
+; {
+;     Send "+{Home}"
+; }
 
 ; Open windows terminal with windows + shift + enter
 #+Enter::
 {
   Run "wt.exe"
 }
+
+
+; i think i can do this toggle mode thing...
+flag := false
+; https://www.autohotkey.com/boards/viewtopic.php?style=7&t=104397
+~Shift::{
+  global flag
+  If (A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < 200)
+    if (!flag)
+    {
+        flag := true
+    }
+    else
+    {
+          flag := false
+    }
+}
+
+
+F1::
+{
+    global flag
+    if (flag) {
+        MsgBox "The hotkey is active and isEnabled is true!"
+    }
+    else {
+        MsgBox "The hotkey is inactive because isEnabled is false."
+    }
+}
+
+
+
+
+; j::
+; {
+;     global flag
+;     if(flag){
+;         Send "{Left}"
+;     }
+;     ; else {
+;     ;     Send "{j}"
+;     ; }
+; }
+
+#HotIf flag
+j::
+{
+    Send "{Left}"
+}
+
+l::
+{
+    Send "{Right}"
+}
+
+i::
+{
+    Send "{Up}"
+}
+
+k::
+{
+    Send "{Down}"
+}
+#HotIf
+
+; k::
+; {
+;     Send "{Down}"
+; }
+
+; i::
+; {
+;     Send "{Up}"
+; }
+
+; ~l::
+; {
+;     global flag
+;     if(flag){
+;         Send "{Right}"
+;     }
+; }
+
+
+
+
+; or i can use this too to main the original button functionality...
+; ~F1::
+; {
+;     if (flag) {
+;         MsgBox "The hotkey is active and isEnabled is true!"
+;     }
+;     else {
+;         MsgBox "The hotkey is inactive because isEnabled is false."
+;     }
+; }
+
+
+
+
 
 ; Remaps hyphen (-) to capslock
 ;  I can still use the regular functionality of capslock by using shift + capslock:
@@ -180,39 +281,39 @@ Space::-
 ; ;     Send "^+{Left}"
 ; ; }
 
-#HotIf GetKeyState(";", "P")
-j::
-{
-    Send "^+{Left}"
-}
+; #HotIf GetKeyState(";", "P")
+; j::
+; {
+;     Send "^+{Left}"
+; }
 
-l::
-{
-    Send "^+{Right}"
-}
-#HotIf
+; l::
+; {
+;     Send "^+{Right}"
+; }
+; #HotIf
 
 
 
-<#+j::
-{
-    Send "{Left}"
-}
+; <#+j::
+; {
+;     Send "{Left}"
+; }
 
-<#+k::
-{
-    Send "{Down}"
-}
+; <#+k::
+; {
+;     Send "{Down}"
+; }
 
-<#+i::
-{
-    Send "{Up}"
-}
+; <#+i::
+; {
+;     Send "{Up}"
+; }
 
-<#+l::
-{
-    Send "{Right}"
-}
+; <#+l::
+; {
+;     Send "{Right}"
+; }
 
 
 
