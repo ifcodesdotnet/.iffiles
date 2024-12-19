@@ -218,10 +218,24 @@ k::
 
 
 
+
+
 ; this will handle moving to the right word by word...
+<^j::
+{
+    Send "^{Left}"
+}
+
 <^l::
 {
     Send "^{Right}"
+}
+
+; highlight this wil handle highlighting
+
+<^<+l::
+{
+    Send "^+{Right}"
 }
 
 #HotIf
