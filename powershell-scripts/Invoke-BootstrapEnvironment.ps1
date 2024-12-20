@@ -19,8 +19,21 @@ function main{
 }
 
 
-$path = $(Split-Path -Path $MyInvocation.MyCommand.Path -Parent)
+# $path = $(Split-Path -Path $MyInvocation.MyCommand.Path -Parent)
 
-Write-Host $path
 
-main
+#main
+
+
+
+# Import-Module $([System.IO.Path]::Combine("$env:HOME", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
+
+# $configurations = Get-Content -Path $([System.IO.Path]::Combine("$env:HOME", ".iffiles", "configurations.json")) -Raw | ConvertFrom-Json
+
+# $temp = Get-Configuration -name vscode -configuration $configurations
+
+# Write-Host $temp.platform.mac.$("target-directory")
+
+
+# i can do a check on this variable to see if it's Darwin or windows nt...
+# $PSVersionTable.OS 
