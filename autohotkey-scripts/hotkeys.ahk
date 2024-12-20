@@ -7,6 +7,12 @@
     Send "!{F4}"
 }
 
+; Open windows terminal with windows + shift + enter
+#+Enter::
+{
+  Run "wt.exe"
+}
+
 ; Minimizes the active window with windows + shift + m
 #+m::
 {
