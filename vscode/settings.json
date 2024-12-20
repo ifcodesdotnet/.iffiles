@@ -28,7 +28,18 @@
     "telemetry.enableTelemetry": false,
 
     //terminal
+    
+    //windows
     "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+    //mac
+    "terminal.integrated.defaultProfile.osx": "PowerShell",
+    "terminal.integrated.profiles.osx": {
+        "PowerShell": {
+            "path": "/usr/local/bin/pwsh"
+        }
+    },
+
     "terminal.integrated.defaultLocation": "editor",
     "terminal.integrated.copyOnSelection": true
 }

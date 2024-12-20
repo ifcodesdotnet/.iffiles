@@ -1,57 +1,83 @@
-# aliases for commands
-Set-Alias -Name c -Value Clear-Host;
-Set-Alias -Name g -Value git;
+Import-Module $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
 
-$env:PATH += ";$env:USERPROFILE\.iffiles\powershell-scripts"
+# start platform specific configurations
+switch ($(Get-Platform)) {
+    "windows" {
+        $env:PATH += ";$([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "powershell-scripts"))"
+
+        function touch {
+            param (
+                [string]
+                $file
+            )
+
+            if ([string]::IsNullOrEmpty($file)) {
+                throw "touch: missing file operand"
+            }
+
+            if(Test-Path $file) {
+                (Get-Item $file).LastWriteTime = Get-Date
+            }
+            else {
+        		New-Item -Path $file -ItemType File -Force | Out-Null
+            }
+        }
+    }
+    "mac" {
+        $env:PATH += ":$([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "powershell-scripts"))"
+    }
+    default {
+        throw [System.PlatformNotSupportedException]::new("Unrecoverable error occurred while loading PowerShell profile, platform not supported.")
+    }
+}
 
 # start functions
-function touch {
-    param (
-        [string]
-        $file
-    )
-
-    if ([string]::IsNullOrEmpty($file)) {
-        throw "touch: missing file operand"
-    }
-
-    if(Test-Path $file) {
-        (Get-Item $file).LastWriteTime = Get-Date
-    }
-    else {
-		New-Item -Path $file -ItemType File -Force | Out-Null
-    }
-}
-
-function .. {
-    Set-Location -Path ".."
-}
-
-function ... {
-    Set-Location -Path "../.."
-}
-
-# take me to my desktop directory
-function d {
-    Set-Location -Path "$env:USERPROFILE\Desktop\"
-}
-
-# take me to my home directory
-function h {
-    Set-Location -Path "$env:USERPROFILE"
-}
-
-# quit
-function q {
+function Stop-PowerShellSession {
     Invoke-command -ScriptBlock {exit}
 }
 
-# take me to my powershell scripts
-function s {
-    Set-Location -Path $($([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "powershell-scripts")))
+# start directory movement functions
+function Set-LocationToPreviousDirectory {
+    Set-Location -Path ".."
 }
 
-# take me to my .dotfiles directory
-function i {
-    Set-Location -Path $($([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles")))
+function Set-LocationToTwoDirectoriesUp {
+    Set-Location -Path $([System.IO.Path]::Combine("..", ".."))
 }
+
+function Set-LocationToHome {
+    Set-Location -Path "$env:IF_HOME"
+}
+
+function Set-LocationToDesktop {
+    Set-Location -Path $([System.IO.Path]::Combine("$env:IF_HOME", "Desktop"))
+}
+
+function Set-LocationToPowerShellScripts {
+    Set-Location -Path $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "powershell-scripts"))
+}
+
+function Set-LocationToDotfiles {
+    Set-Location -Path $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles"))
+}
+
+# removal of default powershell aliases
+if (Get-Alias -Name h -ErrorAction SilentlyContinue) {
+    Remove-Item -Path Alias:h
+}
+
+# aliases for default cmdlets
+Set-Alias -Name c -Value Clear-Host;
+
+# aliases for my custom functions
+Set-Alias -Name q -Value Stop-PowerShellSession
+Set-Alias -Name .. -Value Set-LocationToPreviousDirectory
+Set-Alias -Name ... -Value Set-LocationToTwoDirectoriesUp
+Set-Alias -Name h -Value Set-LocationToHome
+Set-Alias -Name s -Value Set-LocationToPowerShellScripts
+Set-Alias -Name d -Value Set-LocationToDesktop
+Set-Alias -Name i -Value Set-LocationToDotfiles
+
+# aliases third party software
+Set-Alias -Name g -Value git;
+Set-Alias -Name n -Value npm;

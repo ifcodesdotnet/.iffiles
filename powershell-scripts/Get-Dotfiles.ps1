@@ -1,27 +1,26 @@
-Import-Module $([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
+Import-Module $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
 
 function main {
-    $configurations = Get-Content -Path $([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "configurations.json")) -Raw | ConvertFrom-Json
+    foreach($item in $(Get-ConfigurationItemsByPlatform)) {
+        Write-Host "Configuration Name:" $item.name
 
-    foreach ($configuration in $configurations) {
-        Write-Host "Configuration Name:" $configuration.name
+        $platform = Get-PlatformConfigurationByItemName  -name $item.name
 
         # print target directory
-        if ([string]::IsNullOrEmpty($($configuration.'target-directory'))) {
-            Write-Host "  - Target Directory:" $($env:USERPROFILE)
+        if ([string]::IsNullOrEmpty($($platform.'target-directory'))) {
+            Write-Host "  - Target Directory:" $($env:IF_HOME)
         }
         else{
-            Write-Host "  - Target Directory:" $configuration.'target-directory'
+            Write-Host "  - Target Directory:" $([System.IO.Path]::Combine("$env:IF_HOME", $($platform.'target-directory')))
         }
 
         # print dependency information
         Write-Host "  - Dependencies:"
-        if ($null -ne $configuration.dependencies) {
-            $dependencies = Get-Dependency -name $configuration.name -configurations $configurations
+        if ($null -ne $item.dependencies) {
+            $dependencies = Get-Dependency -name $item.name
 
             foreach ($dependency in $dependencies) {
-                $dependencyConfig = Get-Configuration -name $dependency -configurations $configurations
-                Write-Host "    - $($dependencyConfig.name)"
+                Write-Host "    - $($dependency)"
             }
         }
         else {
@@ -33,3 +32,5 @@ function main {
 }
 
 main
+
+# todo document somewhere that ths will only show dependencies for the current platform ..
