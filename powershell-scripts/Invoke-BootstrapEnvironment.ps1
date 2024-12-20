@@ -1,7 +1,8 @@
 
 
 function main{
-    if($IsWindows){
+    # using this environment variable so that I don't have to install PowerShell Core on Windows.
+    if($ENV:os -eq "Windows_NT"){
         # [System.Environment]::SetEnvironmentVariable("IF_HOME", $env:USERPROFILE, [System.EnvironmentVariableTarget]::User)
         Write-Host "Windows"
     }
@@ -22,7 +23,7 @@ function main{
 # $path = $(Split-Path -Path $MyInvocation.MyCommand.Path -Parent)
 
 
-#main
+main
 
 
 
@@ -35,5 +36,6 @@ function main{
 # Write-Host $temp.platform.mac.$("target-directory")
 
 
-# i can do a check on this variable to see if it's Darwin or windows nt...
-# $PSVersionTable.OS 
+
+# Remove-Item Env:MY_VARIABLE
+# $Env:IF_HOME = ""
