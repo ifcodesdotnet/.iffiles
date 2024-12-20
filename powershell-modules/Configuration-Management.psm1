@@ -113,7 +113,7 @@ function Set-Configuration {
         $target
     )
 
-    $source = [System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "$($name)", "*")
+    $source = [System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "$($name)", "*")
 
     if ([string]::IsNullOrEmpty($target)) {
         $target = "$env:USERPROFILE"
@@ -150,15 +150,15 @@ function Update-Configuration {
     )
 
     # get configuration files being versioned in the corresponding directory within my .dotfiles repository.
-    $configurations = [System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "$($name)") | Get-ChildItem
+    $configurations = [System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "$($name)") | Get-ChildItem
 
     foreach ($configuration in $configurations) {
 
         if ([string]::IsNullOrEmpty($($target))) {
-            $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$configuration")
+            $source = [System.IO.Path]::Combine("$env:IF_HOME", "$configuration")
         }
         else {
-            $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$($target)", "$configuration")
+            $source = [System.IO.Path]::Combine("$env:IF_HOME", "$($target)", "$configuration")
         }
 
         Copy-Item -Path "$($source)" -Destination "$($configuration.FullName)"

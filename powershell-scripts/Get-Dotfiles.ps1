@@ -1,14 +1,14 @@
-Import-Module $([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
+Import-Module $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "powershell-modules","Configuration-Management.psm1"))
 
 function main {
-    $configurations = Get-Content -Path $([System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "configurations.json")) -Raw | ConvertFrom-Json
+    $configurations = Get-Content -Path $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "configurations.json")) -Raw | ConvertFrom-Json
 
     foreach ($configuration in $configurations) {
         Write-Host "Configuration Name:" $configuration.name
 
         # print target directory
         if ([string]::IsNullOrEmpty($($configuration.'target-directory'))) {
-            Write-Host "  - Target Directory:" $($env:USERPROFILE)
+            Write-Host "  - Target Directory:" $($env:IF_HOME)
         }
         else{
             Write-Host "  - Target Directory:" $configuration.'target-directory'
