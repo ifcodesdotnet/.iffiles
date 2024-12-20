@@ -1,5 +1,72 @@
 <#
 .SYNOPSIS
+    Converts the configurations.json file to an array of PowerShell Objects.
+
+.DESCRIPTION
+    Converts the configuration file located at the root directory of the repository to an array of PowerShell objects.
+    This function should not be exposed to other scripts as this is just used within the module to get the configuration
+    data.
+#>
+function Get-Configurations {
+    return Get-Content -Path $([System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "configurations.json")) -Raw | ConvertFrom-Json
+}
+
+<#
+.SYNOPSIS
+    Determines the Operating System platform based on the environment.
+
+.DESCRIPTION
+    Checks the corresponding host machine's environment to determine what Operating System platform the current script
+    is running. For Windows we are checking the $env:OS Environment Variable and for MacOs we are checking the
+    PowerShell Automatic variable $IsMacOs.
+#>
+function Get-Platform {
+    if ($env:OS -eq "Windows_NT") {
+        return "windows"
+    }
+    elseif ($IsMacOS) {
+        return "mac"
+    }
+    else {
+        throw [System.PlatformNotSupportedException]::new("Unrecoverable error occurred while getting platform, platform not supported.")
+    }
+}
+
+<#
+.SYNOPSIS
+    Gets the configuration object based on the corresponding platform of the host machine.
+
+.DESCRIPTION
+    Get all the available configurations from the configurations file and filter out the configurations
+    that are not for the current platform. This function should only get the configurations that apply
+    to the current platform.
+#>
+function Get-ConfigurationItemsByPlatform {
+    return $(Get-Configurations)| Where-Object { $_.platforms | Where-Object { $_.name -eq $(Get-Platform) } }
+}
+
+<#
+.SYNOPSIS
+    Get the configuration that corresponds to the configuration items platform.
+
+.DESCRIPTION
+    Get all the available configurations from the configurations file and filter out to the passed in
+    name. Once we have the object return it's platform specific cofiguration.
+
+.PARAMETER name
+    The name of the configuration item that we want to get the configuration that corresponding to the host
+    machine's platform.
+#>
+function Get-PlatformConfigurationByItemName {
+    param (
+        [string]
+        $name
+    )
+    return ($(Get-Configurations) | Where-Object { $_.name -eq $name }).platforms | Where-Object { $_.name -eq $(Get-Platform) }
+}
+
+<#
+.SYNOPSIS
     Recursively get dependencies and transitive dependencies for the specified configuration.
 
 .DESCRIPTION
@@ -56,45 +123,17 @@ function Get-DependencyRecursively {
 function Get-Dependency {
     param (
         [string]
-        $name,
-
-        [array]
-        $configurations
+        $name
     )
 
-    return Get-DependencyRecursively -name $name -configurations $configurations | Sort-Object -Unique
-}
-
-<#
-.SYNOPSIS
-    Get the specified configuration object from the collection of configuration objects by name.
-
-.DESCRIPTION
-    Returns the corresponding configuration object based on the specfied name.
-
-.PARAMETER name
-    Subdirectory within the .dotfiles repository directory contains versioned configuration files.
-
-.PARAMETER configurations
-    Collection of configuration objects parsed from the configurations.json file.
-#>
-function Get-Configuration {
-    param (
-        [string]
-        $name,
-
-        [array]
-        $configurations
-    )
-
-    return $configurations | Where-Object { $_.name -eq $name }
+    return Get-DependencyRecursively -name $name -configurations $(Get-Configurations) | Sort-Object -Unique
 }
 
 <#
 .SYNOPSIS
     Copy versioned configurations from my .dotfiles directory to their corresponding target directory.
 
-.DESCRIPTION
+.DESCRIPTION`
     This function will copy the version configuration files to their target directory based on my
     configurations.json file.
 
@@ -113,13 +152,17 @@ function Set-Configuration {
         $target
     )
 
-    $source = [System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "$($name)", "*")
+    $source = [System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "$($name)", "*")
 
     if ([string]::IsNullOrEmpty($target)) {
-        $target = "$env:USERPROFILE"
+        $target = "$env:IF_HOME"
     }
     else {
-        $target = [System.IO.Path]::Combine("$env:USERPROFILE", "$($target)")
+        $target = [System.IO.Path]::Combine("$env:IF_HOME", "$($target)")
+    }
+
+    if (-not (Test-Path -Path $target)) {
+        New-Item -Path $target -ItemType Directory -Force | Out-Null
     }
 
     Copy-Item -Force -Path "$($source)" -Destination "$($target)"
@@ -150,19 +193,19 @@ function Update-Configuration {
     )
 
     # get configuration files being versioned in the corresponding directory within my .dotfiles repository.
-    $configurations = [System.IO.Path]::Combine("$env:USERPROFILE", ".iffiles", "$($name)") | Get-ChildItem
+    $configurations = [System.IO.Path]::Combine("$env:IF_HOME", ".iffiles", "$($name)") | Get-ChildItem -Force
 
     foreach ($configuration in $configurations) {
 
         if ([string]::IsNullOrEmpty($($target))) {
-            $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$configuration")
+            $source = [System.IO.Path]::Combine("$env:IF_HOME", $configuration.Name)
         }
         else {
-            $source = [System.IO.Path]::Combine("$env:USERPROFILE", "$($target)", "$configuration")
+            $source = [System.IO.Path]::Combine("$env:IF_HOME", "$($target)", $configuration.Name)
         }
 
-        Copy-Item -Path "$($source)" -Destination "$($configuration.FullName)"
+        Copy-Item -Force -Path "$($source)" -Destination "$($configuration.FullName)"
     }
 }
 
-Export-ModuleMember -Function 'Get-Dependency', 'Get-Configuration', 'Set-Configuration', 'Update-Configuration'
+Export-ModuleMember -Function 'Get-Dependency', 'Set-Configuration', 'Update-Configuration', 'Get-ItemConfigurationByItemName', 'Get-Platform', 'Get-ConfigurationItemsByPlatform', 'Get-PlatformConfigurationByItemName'
