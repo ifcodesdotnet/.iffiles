@@ -1,27 +1,74 @@
 [
   {
       "name": "autohotkey-scripts",
-      "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup",
+      "platforms": [
+          {
+              "name": "windows",
+              "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+          }
+      ],
       "dependencies": null
   },
   {
       "name": "vscode",
-      "target-directory": "AppData\\Roaming\\Code\\User",
+      "platforms": [
+          {
+              "name": "windows",
+              "target-directory": "AppData\\Roaming\\Code\\User"
+          },
+          {
+              "name": "mac",
+              "target-directory": "Library/Application Support/Code/User"
+          }
+      ],
       "dependencies": null
   },
   {
       "name": "powershell-profile",
-      "target-directory": "Documents\\WindowsPowerShell",
+      "platforms": [
+          {
+              "name": "windows",
+              "target-directory": "Documents\\WindowsPowerShell"
+          },
+          {
+              "name": "mac",
+              "target-directory": ".config/powershell"
+          }
+      ],
       "dependencies": null
   },
   {
-    "name": "autohotkey-library",
-    "target-directory": "Documents\\AutoHotKey\\Lib",
-    "dependencies": null
+      "name": "autohotkey-library",
+      "platforms": [
+          {
+              "name": "windows",
+              "target-directory": "Documents\\AutoHotKey\\Lib"
+          }
+      ],
+      "dependencies": null
   },
   {
-    "name": "git",
-    "target-directory": null,
-    "dependencies": null
+      "name": "git",
+      "platforms": [
+          {
+              "name": "windows",
+              "target-directory": null
+          },
+          {
+              "name": "mac",
+              "target-directory": null
+          }
+      ],
+      "dependencies": null
+  },
+  {
+      "name": "zshrc",
+      "platforms": [
+          {
+              "name": "mac",
+              "target-directory": null
+          }
+      ],
+      "dependencies": null
   }
 ]
