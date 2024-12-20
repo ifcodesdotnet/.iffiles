@@ -20,10 +20,19 @@ function main{
 }
 
 
+
+
+
+
+
+
+
+
+
 # $path = $(Split-Path -Path $MyInvocation.MyCommand.Path -Parent)
 
 
-main
+# main
 
 
 
@@ -37,5 +46,8 @@ main
 
 
 
-# Remove-Item Env:MY_VARIABLE
-# $Env:IF_HOME = ""
+
+
+# $env:IF_TEST = $env:USERPROFILE
+
+# Invoke-Expression $([System.IO.Path]::Combine("$env:IF_TEST", ".iffiles", "powershell-scripts","temp.ps1"))

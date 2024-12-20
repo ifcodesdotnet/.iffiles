@@ -1,0 +1,67 @@
+[
+    {
+        "name": "autohotkey-scripts",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup",
+                "dependencies": null
+            }
+        ]
+    },
+    {
+        "name": "vscode",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "something on windows",
+                "dependencies": null
+            },
+            {
+                "name": "mac",
+                "target-directory": "something on mac...",
+                "dependencies": null
+            }
+        ]
+    },
+    {
+        "name": "powershell-profile",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "Documents\\WindowsPowerShell",
+                "dependencies": null
+            },
+            {
+                "name": "mac",
+                "target-directory": "Library/Application Support/Code/User",
+                "dependencies": null
+            }
+        ]
+    },
+    {
+        "name": "autohotkey-library",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "Documents\\WindowsPowerShell",
+                "dependencies": null
+            }
+        ]
+    },
+    {
+        "name": "git",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": null,
+                "dependencies": null
+            },
+            {
+                "name": "mac",
+                "target-directory": null,
+                "dependencies": null
+            }
+        ]
+    }
+]
