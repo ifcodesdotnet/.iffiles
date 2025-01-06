@@ -81,3 +81,16 @@ Set-Alias -Name i -Value Set-LocationToDotfiles
 # aliases third party software
 Set-Alias -Name g -Value git;
 Set-Alias -Name n -Value npm;
+
+
+function prompt {
+    $user = Split-Path $env:IF_HOME -Leaf
+    $path = Get-Location
+    $prompt = "> "
+
+    Write-Host "$user@" -NoNewline
+    Write-Host $path -NoNewline
+    Write-BranchName
+
+    return $prompt
+}
