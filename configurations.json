@@ -70,5 +70,15 @@
           }
       ],
       "dependencies": null
+  },
+  {
+      "name": "karabiner-elements",
+      "platforms": [
+          {
+              "name": "mac",
+              "target-directory": ".config/karabiner"
+          }
+      ],
+      "dependencies": null
   }
 ]
