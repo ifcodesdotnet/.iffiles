@@ -11,8 +11,13 @@
 	# general aliases
 	ls = log --oneline --abbrev-commit
 	st = status --short --branch
+	p = push
+
 	goto = checkout
 	g = goto
+
+	rollback = revert
+	r = rollback
 
 	# using git add --all instead of git add . because git add --all stages
 	#  all changes within the repository, including deletions, while git add .
@@ -26,6 +31,8 @@
 	#  (the HEAD pointer).
 	undo ="!f() { git clean --force && git reset --hard HEAD; }; f"
 	u =  undo
+
+	# Branch Aliases
 
 	# aliases for listing branches
 	Get-Branch = branch --verbose
@@ -53,9 +60,9 @@
 	Remove-BranchRemote = "!f() { git push origin --delete \"$1\"; }; f"
 	rbr = Remove-BranchRemote
 
-	# aliases for manipulating HEAD pointer
+	# Head Aliases
 
-	# list modifications captured in HEAD pointer
+	# list modifications in the current HEAD commit
 	Get-Head = show --name-status --oneline HEAD
 	gh = Get-Head
 
@@ -67,19 +74,34 @@
 	Update-HeadMessage = "!f() { git commit --amend; }; f"
 	uhm = Update-HeadMessage
 
-	# I rewrite history a lot when I work so having something that will just get the latest version of
-	#  code from the remote and overrwrite whatever commits I have locally will help a lot when I'm
-	#  working between machines..
-	#
-	# This command will fail if I'm on a detached head
-	#  git symbolic-ref --short HEAD
+	# list aliases in terminal so I don't have to open this file
+	Get-Aliases = "!f() { git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | awk '{printf \"%s = %s\\n\", $1, substr($0, index($0,$2))}'; }; f"
+	ga = Get-Aliases
 
-	# get the lastest commits from the current branch, cleaning the local repository before resetting
-	#  the branch to match the remote repository
-    Get-Latest = "!f() { \
-        branch=$(git symbolic-ref --short HEAD); \
-        git fetch origin \"$branch\";            \
-        git clean --force;                       \
-        git reset --hard origin/\"$branch\";      \
-    }; f"
-	gl = Get-Latest
+	# Get Latest Changes Aliases
+
+	# get the latest changes and update the current branch
+	Get-LastestOverwrite = pull
+	glo = Get-LastestOverwrite
+
+	# get the latest changes without updating the current branch
+	Get-LatestPreserve = fetch
+	glp = Get-LatestPreserve
+
+	# Searching a Repository Aliases
+
+	# show commits that contain a certain word
+	Select-String = "!f() { git log --oneline --grep=\"$1\" --regexp-ignore-case; }; f"
+	ss = Select-String
+
+	# shows commits by a certain author
+	Select-StringAuthor = "!f() { git log --oneline --author \"$1\"; }; f"
+	ssa = Select-StringAuthor
+
+	# shows commits that changed a file
+	Select-StringFile = "!f() { git log --oneline -- \"*$1*\"; }; f"
+	ssf = Select-StringFile
+
+	# Merging Changes Aliases
+
+	Copy-Commit = cherry-pick
