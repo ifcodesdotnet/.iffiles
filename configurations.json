@@ -1,74 +1,84 @@
 [
-  {
-      "name": "autohotkey-scripts",
-      "platforms": [
-          {
-              "name": "windows",
-              "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
-          }
-      ],
-      "dependencies": null
-  },
-  {
-      "name": "vscode",
-      "platforms": [
-          {
-              "name": "windows",
-              "target-directory": "AppData\\Roaming\\Code\\User"
-          },
-          {
-              "name": "mac",
-              "target-directory": "Library/Application Support/Code/User"
-          }
-      ],
-      "dependencies": null
-  },
-  {
-      "name": "powershell-profile",
-      "platforms": [
-          {
-              "name": "windows",
-              "target-directory": "Documents\\WindowsPowerShell"
-          },
-          {
-              "name": "mac",
-              "target-directory": ".config/powershell"
-          }
-      ],
-      "dependencies": null
-  },
-  {
-      "name": "autohotkey-library",
-      "platforms": [
-          {
-              "name": "windows",
-              "target-directory": "Documents\\AutoHotKey\\Lib"
-          }
-      ],
-      "dependencies": null
-  },
-  {
-      "name": "git",
-      "platforms": [
-          {
-              "name": "windows",
-              "target-directory": null
-          },
-          {
-              "name": "mac",
-              "target-directory": null
-          }
-      ],
-      "dependencies": null
-  },
-  {
-      "name": "zshrc",
-      "platforms": [
-          {
-              "name": "mac",
-              "target-directory": null
-          }
-      ],
-      "dependencies": null
-  }
+    {
+        "name": "autohotkey-scripts",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+            }
+        ],
+        "dependencies": null
+    },
+    {
+        "name": "vscode",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "AppData\\Roaming\\Code\\User"
+            },
+            {
+                "name": "mac",
+                "target-directory": "Library/Application Support/Code/User"
+            }
+        ],
+        "dependencies": null
+    },
+    {
+        "name": "powershell-profile",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "Documents\\WindowsPowerShell"
+            },
+            {
+                "name": "mac",
+                "target-directory": ".config/powershell"
+            }
+        ],
+        "dependencies": null
+    },
+    {
+        "name": "autohotkey-library",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": "Documents\\AutoHotKey\\Lib"
+            }
+        ],
+        "dependencies": null
+    },
+    {
+        "name": "git",
+        "platforms": [
+            {
+                "name": "windows",
+                "target-directory": null
+            },
+            {
+                "name": "mac",
+                "target-directory": null
+            }
+        ],
+        "dependencies": null
+    },
+    {
+        "name": "zshrc",
+        "platforms": [
+            {
+                "name": "mac",
+                "target-directory": null
+            }
+        ],
+        "dependencies": null
+    },
+    {
+        "name": "hammerspoon",
+        "platforms": [
+            {
+                "name": "mac",
+                "target-directory": ".hammerspoon"
+            }
+        ],
+        "dependencies": null
+    }
 ]
