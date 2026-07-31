@@ -1,0 +1,46 @@
+{
+    "files": [
+        {
+            "source": "scripts/hotkeys.ahk",
+            "destination": {
+                "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/hotkeys.ahk"
+            }
+        },
+        {
+            "source": "scripts/hotstrings.ahk",
+            "destination": {
+                "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/hotstrings.ahk"
+            }
+        },
+        {
+            "source": "scripts/snap-window-to-landscape-monitor-full.ahk",
+            "destination": {
+                "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/snap-window-to-landscape-monitor-full.ahk"
+            }
+        },
+        {
+            "source": "scripts/snap-window-to-portrait-monitor-top.ahk",
+            "destination": {
+                "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/snap-window-to-portrait-monitor-top.ahk"
+            }
+        },
+        {
+            "source": "scripts/snap-window-to-portrait-monitor-bottom.ahk",
+            "destination": {
+                "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/snap-window-to-portrait-monitor-bottom.ahk"
+            }
+        },
+        {
+            "source": "library/GetFirstPortraitMonitorIndex.ahk",
+            "destination": {
+                "windows": "~/Documents/AutoHotkey/Lib/GetFirstPortraitMonitorIndex.ahk"
+            }
+        },
+        {
+            "source": "library/WinGetPosEx.ahk",
+            "destination": {
+                "windows": "~/Documents/AutoHotkey/Lib/WinGetPosEx.ahk"
+            }
+        }
+    ]
+}

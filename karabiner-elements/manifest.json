@@ -1,0 +1,10 @@
+{
+    "files": [
+        {
+            "source": "karabiner.json",
+            "destination": {
+                "macos": "~/.config/karabiner/karabiner.json"
+            }
+        }
+    ]
+}

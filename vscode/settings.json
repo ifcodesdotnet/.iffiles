@@ -1,38 +1,27 @@
 {
-    //editor
     "editor.mouseWheelZoom": true,
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
     "editor.stickyScroll.enabled": false,
 
-    //workbench
     "workbench.sideBar.location": "right",
 
-    //window
     "window.zoomLevel": 2,
 
-    //explorer
     "explorer.compactFolders": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
 
-    //files
     "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
 
-    //update
     "update.mode": "default",
 
-    //telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
 
-    //terminal
-    
-    //windows
     "terminal.integrated.defaultProfile.windows": "PowerShell",
 
-    //mac
     "terminal.integrated.defaultProfile.osx": "PowerShell",
     "terminal.integrated.profiles.osx": {
         "PowerShell": {

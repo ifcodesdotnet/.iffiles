@@ -1,0 +1,18 @@
+{
+    "files": [
+        {
+            "source": "base.yml",
+            "destination": {
+                "macos": "~/.config/espanso/match/base.yml",
+                "windows": "~/AppData/Roaming/espanso/match/base.yml"
+            }
+        },
+        {
+            "source": "default.yml",
+            "destination": {
+                "macos": "~/.config/espanso/config/default.yml",
+                "windows": "~/AppData/Roaming/espanso/config/default.yml"
+            }
+        }
+    ]
+}

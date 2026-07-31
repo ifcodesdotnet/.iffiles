@@ -1,0 +1,60 @@
+{
+    "files": [
+        {
+            "source": "profile/Microsoft.PowerShell_profile.ps1",
+            "destination": {
+                "windows": "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1",
+                "macos": "~/.config/powershell/Microsoft.PowerShell_profile.ps1",
+                "linux": "~/.config/powershell/Microsoft.PowerShell_profile.ps1"
+            }
+        },
+        {
+            "source": "modules/Environment.psm1",
+            "destination": {
+                "windows": "~/Documents/PowerShell/Modules/Environment/Environment.psm1",
+                "macos": "~/.local/share/powershell/Modules/Environment/Environment.psm1",
+                "linux": "~/.local/share/powershell/Modules/Environment/Environment.psm1"
+            }
+        },
+        {
+            "source": "scripts/Initialize-Environment.ps1",
+            "destination": {
+                "windows": "~/bin/Initialize-Environment.ps1",
+                "macos": "~/.local/bin/Initialize-Environment.ps1",
+                "linux": "~/.local/bin/Initialize-Environment.ps1"
+            }
+        },
+        {
+            "source": "scripts/Set-Dotfiles.ps1",
+            "destination": {
+                "windows": "~/bin/Set-Dotfiles.ps1",
+                "macos": "~/.local/bin/Set-Dotfiles.ps1",
+                "linux": "~/.local/bin/Set-Dotfiles.ps1"
+            }
+        },
+        {
+            "source": "scripts/Start-AutoHotkey.ps1",
+            "destination": {
+                "windows": "~/bin/Start-AutoHotkey.ps1",
+                "macos": "~/.local/bin/Start-AutoHotkey.ps1",
+                "linux": "~/.local/bin/Start-AutoHotkey.ps1"
+            }
+        },
+        {
+            "source": "scripts/Stop-AutoHotkey.ps1",
+            "destination": {
+                "windows": "~/bin/Stop-AutoHotkey.ps1",
+                "macos": "~/.local/bin/Stop-AutoHotkey.ps1",
+                "linux": "~/.local/bin/Stop-AutoHotkey.ps1"
+            }
+        },
+        {
+            "source": "scripts/Update-Dotfiles.ps1",
+            "destination": {
+                "windows": "~/bin/Update-Dotfiles.ps1",
+                "macos": "~/.local/bin/Update-Dotfiles.ps1",
+                "linux": "~/.local/bin/Update-Dotfiles.ps1"
+            }
+        }
+    ]
+}

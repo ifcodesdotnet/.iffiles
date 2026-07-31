@@ -1,0 +1,10 @@
+{
+    "files": [
+        {
+            "source": "init.lua",
+            "destination": {
+                "macos": "~/.hammerspoon/init.lua"
+            }
+        }
+    ]
+}
