@@ -1,0 +1,20 @@
+{
+    "files": [
+        {
+            "source": "settings.json",
+            "destination": {
+                "windows": "~/AppData/Roaming/Code/User/settings.json",
+                "macos": "~/Library/Application Support/Code/User/settings.json",
+                "linux": "~/.config/Code/User/settings.json"
+            }
+        },
+        {
+            "source": "keybindings.json",
+            "destination": {
+                "windows": "~/AppData/Roaming/Code/User/keybindings.json",
+                "macos": "~/Library/Application Support/Code/User/keybindings.json",
+                "linux": "~/.config/Code/User/keybindings.json"
+            }
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "files": [
+        {
+            "source": ".bashrc",
+            "destination": {
+                "windows": "~/.bashrc"
+            }
+        },
+        {
+            "source": ".bash_profile",
+            "destination": {
+                "windows": "~/.bash_profile"
+            }
+        }
+    ]
+}

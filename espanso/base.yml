@@ -1,0 +1,72 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Hotstrings for words I hate spelling.
+
+  - trigger: "arch"
+    replace: "architecture"
+
+  - trigger: "def"
+    replace: "definitely"
+
+  - trigger: "eng"
+    replace: "engineer"
+
+  - trigger: "maint"
+    replace: "maintenance"
+
+  - trigger: "rece"
+    replace: "receive"
+
+  - trigger: "sch"
+    replace: "schedule"
+
+  - trigger: "spec"
+    replace: "specific"
+
+  #  Hotstrings for words I frequently misspell.
+
+  - trigger: "claer"
+    replace: "clear"
+
+  - trigger: "maek"
+    replace: "make"
+
+  - trigger: "subs"
+    replace: "subscription"
+
+  - trigger: "teh"
+    replace: "the"
+
+  - trigger: "hte"
+    replace: "the"
+
+  - trigger: "thw"
+    replace: "the"
+
+  - trigger: "thd"
+    replace: "the"
+
+  - trigger: "htis"
+    replace: "this"
+
+  # Hotstrings for creating new application.
+
+  # React New:
+  # Insert a Vite React + TypeScript project creation command
+  # with cursor positioned for project name input.
+  - trigger: "r:new"
+    replace: "npm create vite@latest $|$ -- --template react-ts"
+
+  # .NET API New:
+  # Insert a .NET 8 Web API project creation command
+  # with cursor positioned for project name input.
+  - trigger: "d:new"
+    replace: "dotnet new webapi --name $|$ --framework net8.0 --use-program-main"

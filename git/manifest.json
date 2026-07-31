@@ -1,0 +1,12 @@
+{
+    "files": [
+        {
+            "source": ".gitconfig",
+            "destination": {
+                "windows": "~/.gitconfig",
+                "macos": "~/.gitconfig",
+                "linux": "~/.gitconfig"
+            }
+        }
+    ]
+}

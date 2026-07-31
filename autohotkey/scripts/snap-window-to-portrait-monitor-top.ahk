@@ -3,7 +3,7 @@
 #Include <WinGetPosEx>
 #Include <GetFirstPortraitMonitorIndex>
 
-#+z::
+#+a::
 {
     Monitor := GetFirstPortraitMonitorIndex()
 
@@ -14,7 +14,7 @@
         WindowWidth := (MonitorWorkAreaRight - MonitorWorkAreaLeft)
 
         WindowXCoordinates := MonitorWorkAreaLeft
-        WindowYCoordinates := MonitorWorkAreaBottom - WindowHeight
+        WindowYCoordinates := MonitorWorkAreaTop
 
         ; check if the window we want to snap is maximized, if the window is
         ;  maximized we need to restore it since we can't move windows that
