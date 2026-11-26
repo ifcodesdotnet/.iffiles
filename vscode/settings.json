@@ -6,6 +6,10 @@
 
     "workbench.sideBar.location": "right",
 
+    "window.titleBarStyle": "native",
+    "window.menuBarVisibility": "toggle",
+    "window.customTitleBarVisibility": "never",
+
     "explorer.compactFolders": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
