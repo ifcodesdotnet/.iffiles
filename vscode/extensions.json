@@ -1,0 +1,16 @@
+{
+    "extensions": [
+        "alefragnani.bookmarks",
+        "alefragnani.project-manager",
+        "anthropic.claude-code",
+        "hashicorp.terraform",
+        "jtavin.ldif",
+        "marp-team.marp-vscode",
+        "mhutchie.git-graph",
+        "ms-dotnettools.csdevkit",
+        "pkief.material-icon-theme",
+        "rhalaly.scope-to-this",
+        "streetsidesoftware.code-spell-checker",
+        "tomoki1207.pdf"
+    ]
+}
