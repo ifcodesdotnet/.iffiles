@@ -7,12 +7,6 @@
             }
         },
         {
-            "source": "scripts/hotstrings.ahk",
-            "destination": {
-                "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/hotstrings.ahk"
-            }
-        },
-        {
             "source": "scripts/remaps.ahk",
             "destination": {
                 "windows": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/remaps.ahk"

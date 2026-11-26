@@ -9,53 +9,154 @@
 # it gets replaced by the "replace" string.
 matches:
   # Hotstrings for words I hate spelling.
+  #
+  # These use `word: true`, so they only expand when the trigger is typed
+  # as a whole word. Type the trigger, then a space or punctuation:
+  #   "sch " -> "schedule "
+  #   "sch." -> "schedule."
+  # `propagate_case: true` keeps your capitalisation, so they work as the
+  # first word of a sentence too:
+  #   "Sch " -> "Schedule "
+  #   "SCH " -> "SCHEDULE "
+  # Words that contain the trigger are left alone, e.g. "search", "engine",
+  # "maintain", "report", "schema".
 
   - trigger: "arch"
     replace: "architecture"
-
-  - trigger: "def"
-    replace: "definitely"
+    word: true
+    propagate_case: true
 
   - trigger: "eng"
     replace: "engineer"
+    word: true
+    propagate_case: true
 
   - trigger: "maint"
     replace: "maintenance"
+    word: true
+    propagate_case: true
 
-  - trigger: "rece"
-    replace: "receive"
+  - trigger: "repo"
+    replace: "repository"
+    word: true
+    propagate_case: true
 
   - trigger: "sch"
     replace: "schedule"
+    word: true
+    propagate_case: true
 
-  - trigger: "spec"
-    replace: "specific"
+  # Typos from typing too fast.
+  #
+  # Each word lists every way of swapping two neighbouring letters
+  # (e.g. "fucntion", "funciton"), minus any swap that is a real word
+  # ("potions" is left alone for "options").
+  #
+  # "the" also catches hitting the key next to "e" ("thw", "thd").
+  #
+  # clear, make and the use `left_word: true` instead of `word: true`, so they
+  # fix as you type, without waiting for a space. They still only fire at the
+  # start of a word, so "birthday" (thd) and "statehood" (teh) are safe.
+  #
+  # `word: true` means the fix happens when you type a space or punctuation
+  # after the typo. `propagate_case: true` keeps your capitalisation:
+  #   "Waht " -> "What "
+  #   "DONT " -> "DON'T "
 
-  #  Hotstrings for words I frequently misspell.
-
-  - trigger: "claer"
+  - triggers: ["lcear", "celar", "claer", "clera"]
     replace: "clear"
+    left_word: true
+    propagate_case: true
 
-  - trigger: "maek"
+  - triggers: ["amke", "mkae", "maek"]
     replace: "make"
+    left_word: true
+    propagate_case: true
 
-  - trigger: "subs"
-    replace: "subscription"
-
-  - trigger: "teh"
+  - triggers: ["hte", "teh", "thw", "thd"]
     replace: "the"
+    left_word: true
+    propagate_case: true
 
-  - trigger: "hte"
-    replace: "the"
+  - triggers: ["ufnction", "fnuction", "fucntion", "funtcion", "funciton", "functoin", "functino"]
+    replace: "function"
+    word: true
+    propagate_case: true
 
-  - trigger: "thw"
-    replace: "the"
+  - triggers: ["hwat", "waht", "whta"]
+    replace: "what"
+    word: true
+    propagate_case: true
 
-  - trigger: "thd"
-    replace: "the"
+  - triggers: ["ersponse", "rseponse", "repsonse", "resopnse", "respnose", "resposne", "respones"]
+    replace: "response"
+    word: true
+    propagate_case: true
 
-  - trigger: "htis"
+  - triggers: ["ehlp", "hlep", "hepl"]
+    replace: "help"
+    word: true
+    propagate_case: true
+
+  - triggers: ["hcange", "cahnge", "chnage", "chagne", "chaneg"]
+    replace: "change"
+    word: true
+    propagate_case: true
+
+  - triggers: ["amking", "mkaing", "maikng", "maknig", "makign"]
+    replace: "making"
+    word: true
+    propagate_case: true
+
+  - triggers: ["erally", "raelly", "relaly", "realyl"]
+    replace: "really"
+    word: true
+    propagate_case: true
+
+  - triggers: ["otpions", "opitons", "optoins", "optinos", "optiosn"]
+    replace: "options"
+    word: true
+    propagate_case: true
+
+  - triggers: ["htis", "tihs", "thsi"]
     replace: "this"
+    word: true
+    propagate_case: true
+
+  - triggers: ["anming", "nmaing", "naimng", "namnig", "namign"]
+    replace: "naming"
+    word: true
+    propagate_case: true
+
+  - triggers: ["htings", "tihngs", "thnigs", "thigns", "thinsg"]
+    replace: "things"
+    word: true
+    propagate_case: true
+
+  - triggers: ["ohw", "hwo"]
+    replace: "how"
+    word: true
+    propagate_case: true
+
+  - triggers: ["ocnstant", "cnostant", "cosntant", "contsant", "consatnt", "constnat", "constatn"]
+    replace: "constant"
+    word: true
+    propagate_case: true
+
+  # Contractions: type them without the apostrophe and espanso adds it.
+  #   "dont " -> "don't "
+  #   "cant " -> "can't "
+  # The swapped-letter versions are fixed too ("dnot", "cnat", ...).
+
+  - triggers: ["dont", "odnt", "dnot", "dotn"]
+    replace: "don't"
+    word: true
+    propagate_case: true
+
+  - triggers: ["cant", "acnt", "cnat", "catn"]
+    replace: "can't"
+    word: true
+    propagate_case: true
 
   # Hotstrings for creating new application.
 
