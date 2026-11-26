@@ -6,8 +6,6 @@
 
     "workbench.sideBar.location": "right",
 
-    "window.zoomLevel": 2,
-
     "explorer.compactFolders": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
